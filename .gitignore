@@ -1,0 +1,27 @@
+# OS / editor
+.DS_Store
+
+# Node (node_modules here is a symlink to an npx cache — never commit it)
+node_modules
+node_modules/
+
+# Dev-only output
+temporary screenshots/
+verify-cart.mjs
+
+# Skill toolchains (local dev tooling, not part of the website)
+impeccable-main/
+taste-skill-main/
+marketingskills-main/
+Agent-Skills-for-Context-Engineering-main/
+claude.md
+CLAUDE.md
+
+# Raw source assets — optimized copies used by the site live in assets/
+Brand Assets/
+New images/
+IMG_*.jpeg
+IMG_*.jpg
+IMG_*.JPG
+IMG_*.HEIC
+IMG_*.heic
