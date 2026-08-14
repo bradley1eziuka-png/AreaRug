@@ -351,6 +351,16 @@ h1,h2,h3,p{ margin:0; }
 /* ============================================================
    Responsive
    ============================================================ */
+
+/* Shared horizontal-gutter fix. `.sec` and `.cats` use a `padding: … 0`
+   shorthand that zeroes the inline padding `.wrap` sets, so their content
+   goes flush to the screen edges. Above --maxw the max-width centering
+   supplies the side gap; at/below it there is none. Re-assert the shared
+   gutter only there, leaving desktop (>1340px) exactly as-is. */
+@media (max-width:1340px){
+  .wrap{ padding-inline:var(--gut); }
+}
+
 @media (max-width:1000px){
   .prod-grid{ grid-template-columns:repeat(2,1fr); }
   .trust-grid,.about-grid,.db-grid,.show-grid{ grid-template-columns:1fr; }

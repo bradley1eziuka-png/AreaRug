@@ -25,7 +25,11 @@ try {
 const suffix = label ? `-${label}` : '';
 const file = join(outDir, `screenshot-${n}${suffix}.png`);
 
-const viewport = isMobile ? { width: 390, height: 844 } : { width: 1440, height: 900 };
+const widthArg = rest.find((a) => a.startsWith('--w='));
+const customW = widthArg ? parseInt(widthArg.split('=')[1], 10) : null;
+const viewport = customW ? { width: customW, height: 844 }
+  : isMobile ? { width: 390, height: 844 }
+  : { width: 1440, height: 900 };
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport, deviceScaleFactor: 2 });
 await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
