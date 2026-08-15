@@ -43,7 +43,7 @@
 .qs{ font-size:.78rem; color:var(--ink-70); border:1px solid var(--rule-2); border-radius:99px; padding:.4rem .9rem; }
 .sizing{ background:var(--paper); border-block:1px solid var(--rule); }
 .sizing-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(1.5rem,4vw,3.5rem); align-items:center; }
-.sizing-video{ border-radius:5px; overflow:hidden; aspect-ratio:16/10; position:relative; background:#20302a; }
+.sizing-video{ border-radius:5px; overflow:hidden; aspect-ratio:16/10; position:relative; background:#1c160d; }
 .sizing-video video{ width:100%; height:100%; object-fit:cover; }
 .sizing h2{ font-family:var(--serif); font-weight:400; font-size:clamp(1.9rem,3vw,2.5rem); letter-spacing:-.02em; }
 .sizing > .wrap > .sizing-grid p.lede{ color:var(--ink-70); margin-top:1rem; line-height:1.6; max-width:44ch; }
@@ -62,11 +62,56 @@
 .reviews-pending{ text-align:center; border:1px dashed var(--rule-2); border-radius:6px; padding:clamp(2rem,4vw,3rem) 1.5rem; }
 .reviews-pending h3{ font-family:var(--serif); font-weight:500; font-size:1.5rem; }
 .reviews-pending p{ color:var(--ink-55); margin-top:.6rem; font-size:.92rem; max-width:48ch; margin-inline:auto; }
+
+/* ---- Size tiles + Size Guide link ---- */
+.size-guide-link{ display:inline-flex; align-items:center; gap:.35rem; font-size:.78rem; font-weight:600; color:var(--accent); }
+.size-guide-link svg{ width:14px; height:14px; stroke:currentColor; stroke-width:1.7; fill:none; }
+.size-help{ font-size:.76rem; color:var(--ink-55); margin-top:.65rem; }
+.size-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:.6rem; }
+.size-opt{ display:flex; flex-direction:column; align-items:center; gap:.4rem; border:1px solid var(--rule-2); border-radius:6px; padding:.7rem .4rem .6rem; text-align:center; font-size:.8rem; background:#fff; cursor:pointer; transition:border-color .15s var(--ease),background .15s var(--ease),color .15s; }
+.size-opt-icon{ width:100%; height:34px; stroke:var(--ink-55); stroke-width:1.4; fill:none; transition:stroke .15s var(--ease); }
+.size-opt-icon circle[fill]{ fill:var(--ink-55); transition:fill .15s var(--ease); }
+.size-opt:hover{ border-color:var(--accent); }
+.size-opt.active{ border-color:var(--accent); background:var(--accent-tint); color:var(--accent); font-weight:600; }
+.size-opt.active .size-opt-icon{ stroke:var(--accent); }
+.size-opt.active .size-opt-icon circle[fill]{ fill:var(--accent); }
+
+/* ---- Size Guide modal ---- */
+.modal-overlay{ position:fixed; inset:0; background:rgba(20,16,9,.5); opacity:0; visibility:hidden; transition:opacity .25s var(--ease),visibility .25s; z-index:110; }
+.modal-overlay.open{ opacity:1; visibility:visible; }
+.size-guide-modal{ position:fixed; top:50%; left:50%; transform:translate(-50%,-46%); width:min(680px,92vw); max-height:86vh; overflow-y:auto; background:#fff; border-radius:8px; z-index:120; opacity:0; visibility:hidden; transition:opacity .25s var(--ease),transform .25s var(--ease),visibility .25s; box-shadow:0 40px 90px -30px rgba(20,20,20,.45); }
+.size-guide-modal.open{ opacity:1; visibility:visible; transform:translate(-50%,-50%); }
+.sgm-head{ display:flex; align-items:center; justify-content:space-between; padding:1.2rem 1.5rem; border-bottom:1px solid var(--rule); position:sticky; top:0; background:#fff; z-index:1; }
+.sgm-head h3{ font-family:var(--serif); font-weight:500; font-size:1.3rem; }
+.sgm-tabs{ display:flex; gap:0; border-bottom:1px solid var(--rule); padding:0 1.5rem; overflow-x:auto; background:#fff; }
+.sgm-tab{ padding:.9rem 1rem; font-size:.85rem; font-weight:500; color:var(--ink-55); border-bottom:2px solid transparent; white-space:nowrap; }
+.sgm-tab.active{ color:var(--accent); border-color:var(--accent); }
+.sgm-body{ padding:1.5rem; }
+.sgm-panel[hidden]{ display:none; }
+.sgm-copy{ color:var(--ink-70); font-size:.92rem; line-height:1.6; max-width:60ch; }
+.sgm-diagrams{ display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem; margin-top:1.3rem; }
+.sgm-diagram{ border:1px solid var(--rule); border-radius:6px; padding:.8rem .5rem; text-align:center; }
+.sgm-diagram svg{ width:100%; height:44px; stroke:var(--ink-55); stroke-width:1.4; fill:none; }
+.sgm-diagram span{ display:block; margin-top:.5rem; font-size:.8rem; font-weight:600; }
+
+/* ---- Product details / care ---- */
+.pd-icons{ display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-bottom:1.3rem; }
+.pd-icon{ text-align:center; }
+.pd-icon svg{ width:28px; height:28px; stroke:var(--accent); stroke-width:1.4; fill:none; margin-inline:auto; }
+.pd-icon span{ display:block; margin-top:.5rem; font-size:.74rem; font-weight:500; line-height:1.3; }
+.care-list{ margin:.4rem 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:.55rem; }
+.care-list li{ display:flex; gap:.55rem; font-size:.92rem; color:var(--ink-70); line-height:1.5; }
+.care-list li::before{ content:""; width:5px; height:5px; border-radius:99px; background:var(--gold-light); margin-top:.6rem; flex-shrink:0; }
+.care-section{ margin-top:3rem; padding-top:2.5rem; border-top:1px solid var(--rule); max-width:640px; }
+.pd-note{ font-size:.83rem; color:var(--ink-55); margin-top:1rem; font-style:italic; }
+
 @media (max-width:1000px){
   .pdp{ grid-template-columns:1fr; }
   .pdp-gallery{ position:static; }
   .sizing-grid{ grid-template-columns:1fr; }
   .specs-grid{ grid-template-columns:1fr; gap:2.5rem; }
+  .pd-icons{ grid-template-columns:repeat(2,1fr); }
+  .sgm-diagrams{ grid-template-columns:repeat(2,1fr); }
 }
 </style>
 </head>
@@ -141,15 +186,40 @@
       <div class="price"><span class="from">from</span> <span class="now">$110.00</span></div>
       <p class="blurb">A hand-knotted rug in 100% wool with a low, dense pile that holds up in living and dining rooms. Knotted by hand in India and finished at a 0.625&Prime; pile height, it feels substantial underfoot without catching chair legs or doors.</p>
 
-      <div class="opt-label"><span>Size</span><span class="help">Exact price shown for your size at checkout</span></div>
-      <div class="size-grid" id="sizeGrid">
-        <button class="size-opt" data-size="2' x 3'">2' x 3'</button>
-        <button class="size-opt" data-size="3' x 5'">3' x 5'</button>
-        <button class="size-opt active" data-size="5' x 8'">5' x 8'</button>
-        <button class="size-opt" data-size="6' x 9'">6' x 9'</button>
-        <button class="size-opt" data-size="8' x 10'">8' x 10'</button>
-        <button class="size-opt" data-size="9' x 12'">9' x 12'</button>
+      <div class="opt-label">
+        <span>Size</span>
+        <button type="button" class="size-guide-link" id="openSizeGuide">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 3v18M3 8h5M3 16h5"/></svg>
+          Size Guide
+        </button>
       </div>
+      <div class="size-grid" id="sizeGrid">
+        <button class="size-opt" data-size="2' x 3'">
+          <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="14" y="8" width="36" height="28" rx="2"/><path d="M14 8a14 14 0 0114 14" stroke-dasharray="2 3"/></svg>
+          <span>2' x 3'</span>
+        </button>
+        <button class="size-opt" data-size="3' x 5'">
+          <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="10" y="6" width="44" height="32" rx="2"/><rect x="24" y="14" width="16" height="16" rx="3"/><circle cx="26" cy="16" r="1" fill="currentColor"/><circle cx="38" cy="16" r="1" fill="currentColor"/><circle cx="26" cy="28" r="1" fill="currentColor"/><circle cx="38" cy="28" r="1" fill="currentColor"/></svg>
+          <span>3' x 5'</span>
+        </button>
+        <button class="size-opt active" data-size="5' x 8'">
+          <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="6" y="6" width="52" height="32" rx="2"/><rect x="14" y="10" width="36" height="12" rx="3"/><path d="M32 10v12"/><circle cx="32" cy="28" r="5"/></svg>
+          <span>5' x 8'</span>
+        </button>
+        <button class="size-opt" data-size="6' x 9'">
+          <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="4" y="6" width="56" height="32" rx="2"/><rect x="16" y="10" width="32" height="10" rx="3"/><path d="M28 10v10M36 10v10"/><rect x="10" y="26" width="10" height="8" rx="2"/><rect x="44" y="26" width="10" height="8" rx="2"/></svg>
+          <span>6' x 9'</span>
+        </button>
+        <button class="size-opt" data-size="8' x 10'">
+          <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="4" y="4" width="56" height="36" rx="2"/><path d="M14 12h30v10H24v14H14z"/></svg>
+          <span>8' x 10'</span>
+        </button>
+        <button class="size-opt" data-size="9' x 12'">
+          <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="4" y="4" width="56" height="36" rx="2"/><rect x="18" y="14" width="28" height="16" rx="2"/><circle cx="18" cy="10" r="1.4" fill="currentColor"/><circle cx="32" cy="10" r="1.4" fill="currentColor"/><circle cx="46" cy="10" r="1.4" fill="currentColor"/><circle cx="18" cy="34" r="1.4" fill="currentColor"/><circle cx="32" cy="34" r="1.4" fill="currentColor"/><circle cx="46" cy="34" r="1.4" fill="currentColor"/></svg>
+          <span>9' x 12'</span>
+        </button>
+      </div>
+      <p class="size-help">Exact price shown for your size at checkout.</p>
 
       <div class="buy-actions">
         <button class="btn btn-primary" id="addToCart">Add to cart</button>
@@ -158,7 +228,7 @@
 
       <div class="returns-box">
         <h4><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 109-9 9 9 0 00-6.4 2.6L3 8"/><path d="M3 4v4h4"/></svg>Returns &amp; exchanges</h4>
-        <p>In-person returns within <b>2 days</b>. Exchanges within <b>1 week</b>. Altered or custom (Design Bar) rugs are final sale. Online return window <span class="todo">is being confirmed with our team.</span></p>
+        <p>In-person returns within <b>2 days</b>, exchanges within <b>1 week</b>. Online orders get a <b>30-day return window</b> (unused, original packaging). Altered or custom (Design Bar) rugs are final sale.</p>
       </div>
 
       <div class="quick-specs">
@@ -210,10 +280,43 @@
       </table>
     </div>
     <div class="spec-block reveal">
-      <h3>Living with it &amp; care</h3>
-      <p>Hand-knotted wool is one of the most durable rug constructions made, which is why the Adoni suits high-traffic living and dining rooms. The low pile keeps it easy to move chairs across and simple to vacuum.</p>
-      <p>Vacuum regularly without a beater bar, and blot spills promptly rather than rubbing. Wool is naturally stain-resistant and holds its color well; for a deep clean, professional rug cleaning is recommended. A rug pad extends its life and keeps it from shifting.</p>
+      <h3>Product details</h3>
+      <div class="pd-icons">
+        <div class="pd-icon">
+          <svg viewBox="0 0 32 32"><rect x="5" y="5" width="22" height="22" rx="3"/><path d="M10 16l4 4 8-9"/></svg>
+          <span>No Assembly</span>
+        </div>
+        <div class="pd-icon">
+          <svg viewBox="0 0 32 32"><path d="M11 11a5 5 0 015 5 5 5 0 005 5M21 11a5 5 0 00-5 5 5 5 0 01-5 5"/></svg>
+          <span>Hand-Knotted</span>
+        </div>
+        <div class="pd-icon">
+          <svg viewBox="0 0 32 32"><rect x="6" y="18" width="20" height="6" rx="1"/><path d="M16 18V8M13 11l3-3 3 3"/></svg>
+          <span>Low-Pile Comfort</span>
+        </div>
+        <div class="pd-icon">
+          <svg viewBox="0 0 32 32"><rect x="5" y="13" width="22" height="8" rx="1"/><path d="M9 13v3M13 13v3M17 13v5M21 13v3M25 13v3"/></svg>
+          <span>Custom Sizing via Design Bar</span>
+        </div>
+      </div>
+      <ul class="care-list">
+        <li>Hand-knotted in India from 100% wool, one of the most durable rug constructions made</li>
+        <li>Low 0.625&Prime; pile keeps chairs easy to move and vacuuming simple</li>
+        <li>Ships ready to unroll and place; no assembly or setup</li>
+        <li>Need a size we don't stock? The Design Bar can order it made to your room</li>
+      </ul>
     </div>
+  </div>
+
+  <div class="care-section reveal">
+    <h3>Washing &amp; care</h3>
+    <ul class="care-list">
+      <li>Vacuum regularly without a beater bar</li>
+      <li>Blot spills promptly rather than rubbing; wool is naturally stain-resistant and holds its color well</li>
+      <li>Professional cleaning recommended for a deep clean</li>
+      <li>A rug pad extends its life and keeps it from shifting underfoot</li>
+    </ul>
+    <p class="pd-note">Hand-knotted wool is not machine washable. Spot clean and vacuum only.</p>
   </div>
 </section>
 
@@ -262,7 +365,7 @@
     <div class="foot-top">
       <div class="foot-brand">
         <div class="mark-lock">
-          <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="4" width="17" height="17" rx="2" fill="none" stroke="#9ec4ad" stroke-width="1.6"/><rect x="11" y="11" width="17" height="17" rx="2" fill="#9ec4ad"/></svg>
+          <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="4" width="17" height="17" rx="2" fill="none" stroke="#d4b568" stroke-width="1.6"/><rect x="11" y="11" width="17" height="17" rx="2" fill="#d4b568"/></svg>
           <span class="fw">Area Rug <span class="co">Co.</span></span>
         </div>
         <p>Designer-guided rugs from a real Michigan business. Two showrooms, thousands of rugs, and a founder who sources every collection herself.</p>
@@ -301,7 +404,7 @@
     </div>
     <div class="foot-bottom">
       <p class="foot-returns">
-        <b style="color:#c4d3ca;font-weight:600;">Returns:</b> 2 days in person · exchanges within 1 week · altered or custom rugs are final sale. Online return window <span class="todo">is being confirmed with the team.</span>
+        <b style="color:#cec3ab;font-weight:600;">Returns:</b> 2 days in person, exchanges within 1 week, in-showroom. Online orders: 30-day return window (unused, original packaging). Altered or custom Design Bar rugs are final sale.
       </p>
       <div class="foot-social">
         <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
@@ -311,7 +414,7 @@
     </div>
     <div class="foot-bottom" style="border-top:0;padding-top:0;">
       <p class="foot-legal">© 2026 Area Rug Co. · Woman-owned · WBENC &amp; GoodWeave Certified</p>
-      <p class="foot-legal"><a href="#" style="box-shadow:inset 0 -1px 0 #3d5a4b;">Privacy</a> &nbsp; <a href="#" style="box-shadow:inset 0 -1px 0 #3d5a4b;">Returns &amp; Exchanges</a> &nbsp; <a href="#" style="box-shadow:inset 0 -1px 0 #3d5a4b;">Accessibility</a></p>
+      <p class="foot-legal"><a href="#" style="box-shadow:inset 0 -1px 0 #4a3f28;">Privacy</a> &nbsp; <a href="#" style="box-shadow:inset 0 -1px 0 #4a3f28;">Returns &amp; Exchanges</a> &nbsp; <a href="#" style="box-shadow:inset 0 -1px 0 #4a3f28;">Accessibility</a></p>
     </div>
   </div>
 </footer>
@@ -322,6 +425,46 @@
     <svg class="icon" viewBox="0 0 24 24" style="width:24px;height:24px;"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
     <input type="search" placeholder="Search rugs, collections, sizes…" id="searchInput" />
     <button class="ico-btn" id="searchClose" aria-label="Close search"><svg class="icon" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+</div>
+
+<!-- ===================== SIZE GUIDE MODAL ===================== -->
+<div class="modal-overlay" id="sgOverlay"></div>
+<div class="size-guide-modal" id="sizeGuideModal" role="dialog" aria-modal="true" aria-label="Size Guide">
+  <div class="sgm-head">
+    <h3>Size Guide</h3>
+    <button class="drawer-close" id="sgClose" aria-label="Close size guide"><svg class="icon" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="sgm-tabs" role="tablist">
+    <button class="sgm-tab active" data-room="living" role="tab">Living Room</button>
+    <button class="sgm-tab" data-room="dining" role="tab">Dining Room</button>
+    <button class="sgm-tab" data-room="bedroom" role="tab">Bedroom</button>
+  </div>
+  <div class="sgm-body">
+    <div class="sgm-panel" data-panel="living">
+      <p class="sgm-copy">Front legs of every seat on the rug at minimum, all legs on for a more grounded look. In an open floor plan, a bigger rug helps define the seating area from the rest of the room.</p>
+      <div class="sgm-diagrams">
+        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="6" y="6" width="52" height="32" rx="2"/><rect x="14" y="10" width="36" height="12" rx="3"/><path d="M32 10v12"/><circle cx="32" cy="28" r="5"/></svg><span>5' x 8'</span></div>
+        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="4" y="6" width="56" height="32" rx="2"/><rect x="16" y="10" width="32" height="10" rx="3"/><path d="M28 10v10M36 10v10"/><rect x="10" y="26" width="10" height="8" rx="2"/><rect x="44" y="26" width="10" height="8" rx="2"/></svg><span>6' x 9'</span></div>
+        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="4" y="4" width="56" height="36" rx="2"/><path d="M14 12h30v10H24v14H14z"/></svg><span>8' x 10'</span></div>
+      </div>
+    </div>
+    <div class="sgm-panel" data-panel="dining" hidden>
+      <p class="sgm-copy">Leave about 24 inches of rug showing beyond the table on every side, so chairs stay on the rug even when pulled out to sit down.</p>
+      <div class="sgm-diagrams">
+        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="12" y="10" width="40" height="24" rx="2"/><rect x="20" y="15" width="24" height="14" rx="2"/><circle cx="20" cy="12" r="1.3" fill="currentColor"/><circle cx="44" cy="12" r="1.3" fill="currentColor"/><circle cx="20" cy="32" r="1.3" fill="currentColor"/><circle cx="44" cy="32" r="1.3" fill="currentColor"/></svg><span>6' x 9'</span></div>
+        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="6" y="6" width="52" height="32" rx="2"/><rect x="16" y="12" width="32" height="20" rx="2"/><circle cx="16" cy="9" r="1.3" fill="currentColor"/><circle cx="32" cy="9" r="1.3" fill="currentColor"/><circle cx="48" cy="9" r="1.3" fill="currentColor"/><circle cx="16" cy="35" r="1.3" fill="currentColor"/><circle cx="32" cy="35" r="1.3" fill="currentColor"/><circle cx="48" cy="35" r="1.3" fill="currentColor"/></svg><span>8' x 10'</span></div>
+        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="4" y="4" width="56" height="36" rx="2"/><rect x="18" y="14" width="28" height="16" rx="2"/><circle cx="18" cy="10" r="1.4" fill="currentColor"/><circle cx="32" cy="10" r="1.4" fill="currentColor"/><circle cx="46" cy="10" r="1.4" fill="currentColor"/><circle cx="18" cy="34" r="1.4" fill="currentColor"/><circle cx="32" cy="34" r="1.4" fill="currentColor"/><circle cx="46" cy="34" r="1.4" fill="currentColor"/></svg><span>9' x 12'</span></div>
+      </div>
+    </div>
+    <div class="sgm-panel" data-panel="bedroom" hidden>
+      <p class="sgm-copy">Extend the rug 18 to 24 inches past the sides and foot of the bed, so your feet land on wool instead of cold floor when you get up.</p>
+      <div class="sgm-diagrams">
+        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="14" y="6" width="36" height="32" rx="2"/><rect x="20" y="10" width="24" height="22" rx="2"/><rect x="22" y="12" width="8" height="6" rx="1.5"/><rect x="34" y="12" width="8" height="6" rx="1.5"/></svg><span>5' x 8'</span></div>
+        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="8" y="5" width="48" height="34" rx="2"/><rect x="16" y="9" width="32" height="26" rx="2"/><rect x="18" y="11" width="10" height="7" rx="1.5"/><rect x="36" y="11" width="10" height="7" rx="1.5"/></svg><span>6' x 9'</span></div>
+        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="4" y="4" width="56" height="36" rx="2"/><rect x="13" y="8" width="38" height="28" rx="2"/><rect x="16" y="11" width="12" height="8" rx="1.5"/><rect x="36" y="11" width="12" height="8" rx="1.5"/></svg><span>8' x 10'</span></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -387,28 +530,84 @@ document.querySelectorAll('.size-opt').forEach(o => o.addEventListener('click', 
   o.classList.add('active'); currentSize = o.dataset.size;
 }));
 
-/* add to cart -> fill drawer */
-function addLine(name, meta, price){
+/* add to cart -> fill drawer, with qty stepper + real rug-pad upsell */
+const RUG_ICON = '<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 9h16M4 15h16M9 4v16M15 4v16"/></svg>';
+const PAD_ICON = '<svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="10" rx="2"/><path d="M4 8l2-3h12l2 3"/></svg>';
+const UNDERPAD = { name: 'Premium Under-pad', meta: '6mm PVC, multiple sizes', unitPrice: 8, label: 'from $8' };
+let cartQty = 1;
+let padAdded = false;
+
+function renderCart(name, meta, unitPrice){
+  const padRow = padAdded ? `
+      <div class="cart-line" id="cartLinePad">
+        <div class="thumb">${PAD_ICON}</div>
+        <div><div class="nm">${UNDERPAD.name}</div><div class="mt">${UNDERPAD.meta}</div><button class="rm" id="padRemove">Remove</button></div>
+        <div class="pr">${UNDERPAD.label}</div>
+      </div>` : '';
+  const upsell = padAdded ? '' : `
+    <div class="cart-upsell">
+      <div class="cart-upsell-head">You may also like</div>
+      <div class="upsell-item">
+        <div class="thumb-sm">${PAD_ICON}</div>
+        <div class="upsell-info"><div class="nm">${UNDERPAD.name}</div><div class="mt">${UNDERPAD.meta}</div></div>
+        <div class="upsell-right"><div class="pr">${UNDERPAD.label}</div><button class="upsell-add" id="addUnderpad">Add to cart</button></div>
+      </div>
+    </div>`;
+  const subtotal = unitPrice * cartQty + (padAdded ? UNDERPAD.unitPrice : 0);
+  cartBody.innerHTML = `
+    <div class="cart-items">
+      <div class="cart-line" id="cartLineMain">
+        <div class="thumb">${RUG_ICON}</div>
+        <div>
+          <div class="nm">${name}</div>
+          <div class="mt">${meta}</div>
+          <div class="qty-stepper">
+            <button class="qty-btn" id="qtyDown" aria-label="Decrease quantity">-</button>
+            <span class="qty-val" id="qtyVal">${cartQty}</span>
+            <button class="qty-btn" id="qtyUp" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="rm" id="cartRemove">Remove</button>
+        </div>
+        <div class="pr">from $${unitPrice}</div>
+      </div>${padRow}
+    </div>
+    ${upsell}
+    <div class="cart-foot">
+      <div class="sub-row"><span>Subtotal</span><b>from $${subtotal}</b></div>
+      <div class="ship-note">Exact size pricing &amp; shipping are confirmed at checkout.</div>
+      <a href="#" class="btn btn-primary">Go to checkout</a>
+      <p class="returns-mini">In-person: 2-day returns, 1-week exchanges. Online: 30-day returns. Custom rugs are final sale.</p>
+    </div>`;
+  cartCount.textContent = String(cartQty + (padAdded ? 1 : 0));
+  document.getElementById('cartRemove').addEventListener('click', () => { cartQty = 1; padAdded = false; renderEmpty(); });
+  document.getElementById('qtyDown').addEventListener('click', () => { if (cartQty > 1){ cartQty--; renderCart(name, meta, unitPrice); } });
+  document.getElementById('qtyUp').addEventListener('click', () => { cartQty++; renderCart(name, meta, unitPrice); });
+  if (padAdded) {
+    document.getElementById('padRemove').addEventListener('click', () => { padAdded = false; renderCart(name, meta, unitPrice); });
+  } else {
+    document.getElementById('addUnderpad').addEventListener('click', () => { padAdded = true; renderCart(name, meta, unitPrice); });
+  }
+}
+document.getElementById('addToCart').addEventListener('click', () => { cartQty = 1; renderCart('Adoni Charcoal', 'Size: ' + currentSize + ' · 100% wool', 110); openCart(); });
+document.getElementById('addSample').addEventListener('click', () => {
   cartBody.innerHTML = `
     <div class="cart-items">
       <div class="cart-line">
-        <div class="thumb"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 9h16M4 15h16M9 4v16M15 4v16"/></svg></div>
-        <div><div class="nm">${name}</div><div class="mt">${meta}</div><button class="rm" id="cartRemove">Remove</button></div>
-        <div class="pr">${price}</div>
+        <div class="thumb">${RUG_ICON}</div>
+        <div><div class="nm">Adoni Charcoal sample swatch</div><div class="mt">Wool, charcoal</div><button class="rm" id="cartRemove">Remove</button></div>
+        <div class="pr">$5.00</div>
       </div>
     </div>
     <div class="cart-foot">
-      <div class="sub-row"><span>Subtotal</span><b>${price}</b></div>
+      <div class="sub-row"><span>Subtotal</span><b>$5.00</b></div>
       <div class="ship-note">Exact size pricing &amp; shipping are confirmed at checkout.</div>
-      <a href="#" class="btn btn-primary">Checkout</a>
-      <p class="returns-mini">In-person returns within 2 days · exchanges within 1 week · custom rugs are final sale.</p>
+      <a href="#" class="btn btn-primary">Go to checkout</a>
+      <p class="returns-mini">In-person: 2-day returns, 1-week exchanges. Online: 30-day returns. Custom rugs are final sale.</p>
     </div>`;
   cartCount.textContent = '1';
   document.getElementById('cartRemove').addEventListener('click', renderEmpty);
   openCart();
-}
-document.getElementById('addToCart').addEventListener('click', () => addLine('Adoni Charcoal', 'Size: ' + currentSize + ' · 100% wool', 'from $110'));
-document.getElementById('addSample').addEventListener('click', () => addLine('Adoni Charcoal · sample swatch', 'Wool · charcoal', '$5.00'));
+});
 
 const searchBar = document.getElementById('searchBar');
 document.getElementById('searchToggle').addEventListener('click', () => { searchBar.classList.add('open'); setTimeout(()=>document.getElementById('searchInput').focus(),120); });
@@ -417,7 +616,22 @@ document.getElementById('searchClose').addEventListener('click', () => searchBar
 const nav = document.getElementById('primaryNav');
 document.getElementById('hamburger').addEventListener('click', () => nav.classList.toggle('open'));
 nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
-addEventListener('keydown', e => { if (e.key === 'Escape'){ closeAll(); searchBar.classList.remove('open'); nav.classList.remove('open'); } });
+
+/* size guide modal */
+const sgOverlay = document.getElementById('sgOverlay');
+const sizeGuideModal = document.getElementById('sizeGuideModal');
+const openSizeGuide = () => { sgOverlay.classList.add('open'); sizeGuideModal.classList.add('open'); document.body.style.overflow='hidden'; };
+const closeSizeGuide = () => { sgOverlay.classList.remove('open'); sizeGuideModal.classList.remove('open'); document.body.style.overflow=''; };
+document.getElementById('openSizeGuide').addEventListener('click', openSizeGuide);
+document.getElementById('sgClose').addEventListener('click', closeSizeGuide);
+sgOverlay.addEventListener('click', closeSizeGuide);
+document.querySelectorAll('.sgm-tab').forEach(tab => tab.addEventListener('click', () => {
+  document.querySelectorAll('.sgm-tab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+  document.querySelectorAll('.sgm-panel').forEach(p => p.hidden = p.dataset.panel !== tab.dataset.room);
+}));
+
+addEventListener('keydown', e => { if (e.key === 'Escape'){ closeAll(); closeSizeGuide(); searchBar.classList.remove('open'); nav.classList.remove('open'); } });
 </script>
 </body>
 </html>

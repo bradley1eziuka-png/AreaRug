@@ -25,3 +25,9 @@ IMG_*.jpg
 IMG_*.JPG
 IMG_*.HEIC
 IMG_*.heic
+Family.png
+Family 1.png
+
+# Marco's structural reference screenshots (layout guidance only, not site assets —
+# also real screenshots of another company's live site, kept out of the repo)
+Reference images/
