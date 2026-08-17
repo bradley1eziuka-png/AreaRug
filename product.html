@@ -69,12 +69,13 @@
 .size-help{ font-size:.76rem; color:var(--ink-55); margin-top:.65rem; }
 .size-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:.6rem; }
 .size-opt{ display:flex; flex-direction:column; align-items:center; gap:.4rem; border:1px solid var(--rule-2); border-radius:6px; padding:.7rem .4rem .6rem; text-align:center; font-size:.8rem; background:#fff; cursor:pointer; transition:border-color .15s var(--ease),background .15s var(--ease),color .15s; }
-.size-opt-icon{ width:100%; height:34px; stroke:var(--ink-55); stroke-width:1.4; fill:none; transition:stroke .15s var(--ease); }
-.size-opt-icon circle[fill]{ fill:var(--ink-55); transition:fill .15s var(--ease); }
+.size-opt-icon{ width:100%; height:34px; stroke:var(--ink-55); stroke-width:1.3; fill:none; transition:stroke .15s var(--ease); }
+.size-opt-icon .rug-fill{ fill:var(--gold-light); stroke:none; transition:fill .15s var(--ease); }
 .size-opt:hover{ border-color:var(--accent); }
 .size-opt.active{ border-color:var(--accent); background:var(--accent-tint); color:var(--accent); font-weight:600; }
 .size-opt.active .size-opt-icon{ stroke:var(--accent); }
-.size-opt.active .size-opt-icon circle[fill]{ fill:var(--accent); }
+.size-opt.active .size-opt-icon .rug-fill{ fill:var(--accent); }
+.size-grid{ grid-template-columns:repeat(4,1fr); }
 
 /* ---- Size Guide modal ---- */
 .modal-overlay{ position:fixed; inset:0; background:rgba(20,16,9,.5); opacity:0; visibility:hidden; transition:opacity .25s var(--ease),visibility .25s; z-index:110; }
@@ -134,7 +135,7 @@
         <span class="lbl">Search</span>
       </button>
     </div>
-    <a href="index.html" class="wordmark">Area Rug&nbsp;<span class="co">Co.</span></a>
+    <a href="index.html" class="wordmark"><img class="wordmark-logo" src="assets/img/logo-black.png" alt="Area Rug Co." /></a>
     <div class="header-right">
       <a href="showrooms.html" class="ico-btn" aria-label="Showrooms">
         <svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
@@ -144,17 +145,21 @@
         <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
       </button>
       <button class="ico-btn cart-btn" id="cartToggle" aria-label="Cart">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg>
+        <svg class="bag-icon" viewBox="0 0 24 24"><path d="M4 8h11l-.9 10.5a2 2 0 01-2 1.5H6.9a2 2 0 01-2-1.5L4 8z"/><path d="M7.5 8V6a3.5 3.5 0 017 0v2"/><path d="M13 12h6.5a1 1 0 011 1.1l-.9 8.4a1.6 1.6 0 01-1.6 1.5H14"/></svg>
         <span class="count">0</span>
       </button>
     </div>
   </div>
   <nav class="primary-nav" id="primaryNav" aria-label="Primary">
     <ul>
-      <li><a href="product.html" class="is-active">Rugs</a></li>
-      <li><a href="index.html#designbar">The Design Bar</a></li>
+      <li><a href="product.html" class="is-active">Trending Rugs</a></li>
+      <li><a href="#">Size</a></li>
+      <li><a href="#">Room Type</a></li>
+      <li><a href="#">Rug Type</a></li>
+      <li><a href="#">Home Decor Accessories</a></li>
+      <li><a href="#">Clearance</a></li>
+      <li><a href="about.html">About Us</a></li>
       <li><a href="showrooms.html">Showrooms</a></li>
-      <li><a href="about.html">Guidance</a></li>
     </ul>
   </nav>
 </header>
@@ -183,63 +188,160 @@
     <div class="buybox">
       <div class="collection">Adoni Collection</div>
       <h1>Adoni Charcoal</h1>
-      <div class="price"><span class="from">from</span> <span class="now">$110.00</span></div>
+      <div class="price"><span class="now">$110.00</span></div>
       <p class="blurb">A hand-knotted rug in 100% wool with a low, dense pile that holds up in living and dining rooms. Knotted by hand in India and finished at a 0.625&Prime; pile height, it feels substantial underfoot without catching chair legs or doors.</p>
 
-      <div class="opt-label">
-        <span>Size</span>
-        <button type="button" class="size-guide-link" id="openSizeGuide">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 3v18M3 8h5M3 16h5"/></svg>
-          Size Guide
+      <!-- ===== Size accordion (open by default) ===== -->
+      <div class="acc open" id="accSize">
+        <button type="button" class="acc-head">
+          <span>Size — <span id="sizeSelectedLabel">5' x 8'</span></span>
+          <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </button>
+        <div class="acc-panel">
+          <div class="acc-panel-inner">
+            <div class="opt-label" style="margin-top:0;">
+              <span class="size-help" style="margin-top:0;">One flat price, every size.</span>
+              <button type="button" class="size-guide-link" id="openSizeGuide">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 3v18M3 8h5M3 16h5"/></svg>
+                Size Guide
+              </button>
+            </div>
+            <div class="size-grid" id="sizeGrid">
+              <button class="size-opt" data-size="2' x 3'">
+                <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="4" y="4" width="56" height="36" rx="2"/><rect class="rug-fill" x="24" y="16" width="16" height="12" rx="1"/><rect x="26" y="8" width="12" height="5" rx="1"/></svg>
+                <span>2' x 3'</span>
+              </button>
+              <button class="size-opt" data-size="3' x 5'">
+                <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="4" y="4" width="56" height="36" rx="2"/><rect class="rug-fill" x="16" y="12" width="26" height="18" rx="1"/><circle cx="49" cy="21" r="5"/></svg>
+                <span>3' x 5'</span>
+              </button>
+              <button class="size-opt" data-size="3' x 7'">
+                <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="4" y="4" width="56" height="36" rx="2"/><rect class="rug-fill" x="10" y="14" width="44" height="16" rx="1"/><rect x="14" y="8" width="14" height="5" rx="1"/></svg>
+                <span>3' x 7'</span>
+              </button>
+              <button class="size-opt" data-size="4' x 6'">
+                <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="4" y="4" width="56" height="36" rx="2"/><rect class="rug-fill" x="12" y="10" width="34" height="24" rx="1"/><rect x="16" y="7" width="24" height="8" rx="3"/><rect x="44" y="20" width="9" height="9" rx="4"/></svg>
+                <span>4' x 6'</span>
+              </button>
+              <button class="size-opt active" data-size="5' x 8'">
+                <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="6" y="6" width="52" height="32" rx="2"/><rect class="rug-fill" x="14" y="10" width="36" height="20" rx="1"/><rect x="18" y="6" width="28" height="8" rx="3"/><rect x="12" y="23" width="8" height="8" rx="2.5"/><rect x="44" y="23" width="8" height="8" rx="2.5"/><circle cx="32" cy="27" r="3"/></svg>
+                <span>5' x 8'</span>
+              </button>
+              <button class="size-opt" data-size="7' x 10'">
+                <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="3" y="4" width="58" height="36" rx="2"/><rect class="rug-fill" x="8" y="8" width="48" height="28" rx="1"/><rect x="14" y="6" width="36" height="9" rx="3"/><rect x="10" y="26" width="9" height="8" rx="3"/><rect x="45" y="26" width="9" height="8" rx="3"/><circle cx="32" cy="28" r="3.5"/></svg>
+                <span>7' x 10'</span>
+              </button>
+              <button class="size-opt" data-size="8' x 11'">
+                <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="2" y="3" width="60" height="38" rx="2"/><rect class="rug-fill" x="6" y="6" width="52" height="32" rx="1"/><rect x="12" y="4" width="40" height="10" rx="3"/><rect x="8" y="28" width="10" height="9" rx="3"/><rect x="46" y="28" width="10" height="9" rx="3"/><circle cx="32" cy="30" r="4"/></svg>
+                <span>8' x 11'</span>
+              </button>
+              <button class="size-opt" data-size="9' x 12'">
+                <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="1" y="2" width="62" height="40" rx="2"/><rect class="rug-fill" x="4" y="5" width="56" height="34" rx="1"/><rect x="10" y="3" width="44" height="11" rx="3"/><rect x="5" y="30" width="11" height="10" rx="3"/><rect x="48" y="30" width="11" height="10" rx="3"/><circle cx="32" cy="32" r="4.5"/></svg>
+                <span>9' x 12'</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="size-grid" id="sizeGrid">
-        <button class="size-opt" data-size="2' x 3'">
-          <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="14" y="8" width="36" height="28" rx="2"/><path d="M14 8a14 14 0 0114 14" stroke-dasharray="2 3"/></svg>
-          <span>2' x 3'</span>
-        </button>
-        <button class="size-opt" data-size="3' x 5'">
-          <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="10" y="6" width="44" height="32" rx="2"/><rect x="24" y="14" width="16" height="16" rx="3"/><circle cx="26" cy="16" r="1" fill="currentColor"/><circle cx="38" cy="16" r="1" fill="currentColor"/><circle cx="26" cy="28" r="1" fill="currentColor"/><circle cx="38" cy="28" r="1" fill="currentColor"/></svg>
-          <span>3' x 5'</span>
-        </button>
-        <button class="size-opt active" data-size="5' x 8'">
-          <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="6" y="6" width="52" height="32" rx="2"/><rect x="14" y="10" width="36" height="12" rx="3"/><path d="M32 10v12"/><circle cx="32" cy="28" r="5"/></svg>
-          <span>5' x 8'</span>
-        </button>
-        <button class="size-opt" data-size="6' x 9'">
-          <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="4" y="6" width="56" height="32" rx="2"/><rect x="16" y="10" width="32" height="10" rx="3"/><path d="M28 10v10M36 10v10"/><rect x="10" y="26" width="10" height="8" rx="2"/><rect x="44" y="26" width="10" height="8" rx="2"/></svg>
-          <span>6' x 9'</span>
-        </button>
-        <button class="size-opt" data-size="8' x 10'">
-          <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="4" y="4" width="56" height="36" rx="2"/><path d="M14 12h30v10H24v14H14z"/></svg>
-          <span>8' x 10'</span>
-        </button>
-        <button class="size-opt" data-size="9' x 12'">
-          <svg class="size-opt-icon" viewBox="0 0 64 44"><rect x="4" y="4" width="56" height="36" rx="2"/><rect x="18" y="14" width="28" height="16" rx="2"/><circle cx="18" cy="10" r="1.4" fill="currentColor"/><circle cx="32" cy="10" r="1.4" fill="currentColor"/><circle cx="46" cy="10" r="1.4" fill="currentColor"/><circle cx="18" cy="34" r="1.4" fill="currentColor"/><circle cx="32" cy="34" r="1.4" fill="currentColor"/><circle cx="46" cy="34" r="1.4" fill="currentColor"/></svg>
-          <span>9' x 12'</span>
-        </button>
-      </div>
-      <p class="size-help">Exact price shown for your size at checkout.</p>
 
-      <div class="buy-actions">
+      <div class="buy-actions" style="margin-top:1.4rem;">
         <button class="btn btn-primary" id="addToCart">Add to cart</button>
         <button class="btn btn-outline" id="addSample">Order a $5 sample</button>
       </div>
+      <p style="font-size:.78rem;color:var(--ink-55);margin-top:.8rem;">In-person returns within 2 days, online within 30. <a href="#accReturns" class="link-underline" style="font-size:.78rem;" onclick="document.getElementById('accReturns').classList.add('open')">Full policy</a></p>
 
-      <div class="returns-box">
-        <h4><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 109-9 9 9 0 00-6.4 2.6L3 8"/><path d="M3 4v4h4"/></svg>Returns &amp; exchanges</h4>
-        <p>In-person returns within <b>2 days</b>, exchanges within <b>1 week</b>. Online orders get a <b>30-day return window</b> (unused, original packaging). Altered or custom (Design Bar) rugs are final sale.</p>
+      <!-- ===== Product Details accordion ===== -->
+      <div class="acc" id="accDetails">
+        <button type="button" class="acc-head">
+          <span>Product Details</span>
+          <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc-panel">
+          <div class="acc-panel-inner">
+            <div class="pd-icons">
+              <div class="pd-icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15h20M6 15a3 3 0 013-3h14a3 3 0 013 3v9a2 2 0 01-2 2H8a2 2 0 01-2-2v-9z"/><path d="M11 12V9a2 2 0 012-2h6a2 2 0 012 2v3"/></svg>
+                <span>No Assembly<br />Unroll &amp; place</span>
+              </div>
+              <div class="pd-icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 8c0 4-3 4-3 8s3 4 3 8M23 8c0 4 3 4 3 8s-3 4-3 8"/><path d="M9 8h14M9 24h14"/><circle cx="16" cy="16" r="2"/></svg>
+                <span>Hand-Knotted<br />India, 100% wool</span>
+              </div>
+              <div class="pd-icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h24M6 22v-4l2-4h16l2 4v4"/><path d="M6 22a4 4 0 01-2 3M26 22a4 4 0 002 3"/><path d="M13 14l1.5-3h3L19 14"/></svg>
+                <span>Low-Pile<br />0.625&Prime; height</span>
+              </div>
+              <div class="pd-icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 25V11l11-6 11 6v14"/><path d="M5 25h22M13 25v-8h6v8"/><path d="M22 14l3-1.5"/></svg>
+                <span>Custom Sizing<br />via Design Bar</span>
+              </div>
+            </div>
+            <table class="spec-table">
+              <tr><th>Material</th><td>100% wool</td></tr>
+              <tr><th>Construction</th><td>Hand-knotted, low pile</td></tr>
+              <tr><th>Pile height</th><td>0.625&Prime;</td></tr>
+              <tr><th>Origin</th><td>Made in India</td></tr>
+              <tr><th>Colorway</th><td>Charcoal</td></tr>
+              <tr><th>Also available in</th><td>Brown, Gold, Grey, Ivory, Light Grey</td></tr>
+            </table>
+            <ul class="care-list" style="margin-top:1rem;">
+              <li>Ships ready to unroll and place; no assembly or setup</li>
+              <li>Need a size we don't stock? The Design Bar can order it made to your room</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="quick-specs">
-        <span class="qs">100% wool</span>
-        <span class="qs">Hand-knotted</span>
-        <span class="qs">Made in India</span>
-        <span class="qs">0.625&Prime; pile</span>
+      <!-- ===== Returns & Exchanges accordion ===== -->
+      <div class="acc" id="accReturns">
+        <button type="button" class="acc-head">
+          <span>Returns &amp; Exchanges</span>
+          <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc-panel">
+          <div class="acc-panel-inner">
+            <p style="font-size:.92rem;color:var(--ink-70);line-height:1.6;">In-person returns within <b>2 days</b> of purchase, exchanges within <b>1 week</b>, at either showroom. Online orders get a <b>30-day return window</b> (unused, original packaging). Altered or custom Design Bar rugs are final sale.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Washing & Care accordion ===== -->
+      <div class="acc" id="accCare">
+        <button type="button" class="acc-head">
+          <span>Washing &amp; Care</span>
+          <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc-panel">
+          <div class="acc-panel-inner">
+            <ul class="care-list">
+              <li>Vacuum regularly without a beater bar</li>
+              <li>Blot spills promptly rather than rubbing; wool is naturally stain-resistant and holds its color well</li>
+              <li>Professional cleaning recommended for a deep clean</li>
+              <li>A rug pad extends its life and keeps it from shifting underfoot</li>
+            </ul>
+            <p class="pd-note">Hand-knotted wool is not machine washable. Spot clean and vacuum only.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- ===================== ROOM CONTEXT ===================== -->
+<section class="sec wrap" style="padding-top:0;">
+  <div class="sec-head reveal">
+    <div>
+      <h2 class="serif">Rugs, in the room.</h2>
+      <p class="sub">A feel for scale before you measure your own space.</p>
+    </div>
+  </div>
+  <div class="room-ctx-grid reveal">
+    <div class="room-ctx-cell"><img src="assets/img/room-living.jpg" alt="A rug grounding a neutral living room" /><span class="rc-label">Living Room</span></div>
+    <div class="room-ctx-cell"><img src="assets/img/room-bedroom-ctx.jpg" alt="A rug at the foot of a bed" /><span class="rc-label">Bedroom</span></div>
+    <div class="room-ctx-cell"><img src="assets/img/room-dining.jpg" alt="A rug under a round dining table" /><span class="rc-label">Dining Room</span></div>
+    <div class="room-ctx-cell"><img src="assets/img/room-hallway.jpg" alt="A runner rug in an entry hallway" /><span class="rc-label">Entryway</span></div>
+  </div>
+</section>
 
 <!-- ===================== SIZING (what-size-rug video, priority) ===================== -->
 <section class="sizing">
@@ -265,58 +367,30 @@
   </div>
 </section>
 
-<!-- ===================== DETAILS / SPECS ===================== -->
-<section class="sec wrap" id="care">
-  <div class="specs-grid">
-    <div class="spec-block reveal">
-      <h3>The details</h3>
-      <table class="spec-table">
-        <tr><th>Material</th><td>100% wool</td></tr>
-        <tr><th>Construction</th><td>Hand-knotted, low pile</td></tr>
-        <tr><th>Pile height</th><td>0.625&Prime;</td></tr>
-        <tr><th>Origin</th><td>Made in India</td></tr>
-        <tr><th>Colorway</th><td>Charcoal</td></tr>
-        <tr><th>Also available in</th><td>Brown, Gold, Grey, Ivory, Light Grey</td></tr>
-      </table>
-    </div>
-    <div class="spec-block reveal">
-      <h3>Product details</h3>
-      <div class="pd-icons">
-        <div class="pd-icon">
-          <svg viewBox="0 0 32 32"><rect x="5" y="5" width="22" height="22" rx="3"/><path d="M10 16l4 4 8-9"/></svg>
-          <span>No Assembly</span>
-        </div>
-        <div class="pd-icon">
-          <svg viewBox="0 0 32 32"><path d="M11 11a5 5 0 015 5 5 5 0 005 5M21 11a5 5 0 00-5 5 5 5 0 01-5 5"/></svg>
-          <span>Hand-Knotted</span>
-        </div>
-        <div class="pd-icon">
-          <svg viewBox="0 0 32 32"><rect x="6" y="18" width="20" height="6" rx="1"/><path d="M16 18V8M13 11l3-3 3 3"/></svg>
-          <span>Low-Pile Comfort</span>
-        </div>
-        <div class="pd-icon">
-          <svg viewBox="0 0 32 32"><rect x="5" y="13" width="22" height="8" rx="1"/><path d="M9 13v3M13 13v3M17 13v5M21 13v3M25 13v3"/></svg>
-          <span>Custom Sizing via Design Bar</span>
-        </div>
-      </div>
-      <ul class="care-list">
-        <li>Hand-knotted in India from 100% wool, one of the most durable rug constructions made</li>
-        <li>Low 0.625&Prime; pile keeps chairs easy to move and vacuuming simple</li>
-        <li>Ships ready to unroll and place; no assembly or setup</li>
-        <li>Need a size we don't stock? The Design Bar can order it made to your room</li>
-      </ul>
+<!-- ===================== WHY YOU'LL ENJOY THESE RUGS (visual-first) ===================== -->
+<section class="sec wrap" id="care" style="padding-top:0;">
+  <div class="sec-head reveal" style="justify-content:center;text-align:center;">
+    <div style="margin-inline:auto;">
+      <h2 class="serif">Why you'll enjoy this rug</h2>
+      <p class="sub" style="margin-inline:auto;">Real reasons, not marketing copy.</p>
     </div>
   </div>
-
-  <div class="care-section reveal">
-    <h3>Washing &amp; care</h3>
-    <ul class="care-list">
-      <li>Vacuum regularly without a beater bar</li>
-      <li>Blot spills promptly rather than rubbing; wool is naturally stain-resistant and holds its color well</li>
-      <li>Professional cleaning recommended for a deep clean</li>
-      <li>A rug pad extends its life and keeps it from shifting underfoot</li>
-    </ul>
-    <p class="pd-note">Hand-knotted wool is not machine washable. Spot clean and vacuum only.</p>
+  <div class="enjoy-grid reveal">
+    <div class="enjoy-card">
+      <div class="enjoy-media"><img src="assets/img/room-living.jpg" alt="A rug unrolled flat in a living room, ready to use" /></div>
+      <h3>No assembly</h3>
+      <p>It arrives rolled. Unroll it, let it settle for a day, and it lies flat.</p>
+    </div>
+    <div class="enjoy-card">
+      <div class="enjoy-media"><img src="assets/img/rug-natural.jpg" alt="Close-up of a hand-knotted wool rug's texture" /></div>
+      <h3>Built to last</h3>
+      <p>Hand-knotted 100% wool is one of the most durable constructions made.</p>
+    </div>
+    <div class="enjoy-card">
+      <div class="enjoy-media"><img src="assets/img/rug-bedroom.jpg" alt="Soft, low-pile rug in a calm bedroom" /></div>
+      <h3>Comfortable underfoot</h3>
+      <p>A low, dense pile that's warm to walk on without catching furniture or doors.</p>
+    </div>
   </div>
 </section>
 
@@ -525,10 +599,20 @@ function renderEmpty(){ cartBody.innerHTML = emptyCartHTML; cartCount.textConten
 
 /* size selection */
 let currentSize = "5' x 8'";
+const sizeLabelEl = document.getElementById('sizeSelectedLabel');
 document.querySelectorAll('.size-opt').forEach(o => o.addEventListener('click', () => {
   document.querySelectorAll('.size-opt').forEach(x => x.classList.remove('active'));
   o.classList.add('active'); currentSize = o.dataset.size;
+  if (sizeLabelEl) sizeLabelEl.textContent = currentSize;
 }));
+
+/* accordions (Size / Product Details / Returns & Exchanges / Washing & Care) */
+document.querySelectorAll('.acc-head').forEach(head => {
+  head.addEventListener('click', () => {
+    const acc = head.closest('.acc');
+    acc.classList.toggle('open');
+  });
+});
 
 /* add to cart -> fill drawer, with qty stepper + real rug-pad upsell */
 const RUG_ICON = '<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 9h16M4 15h16M9 4v16M15 4v16"/></svg>';
@@ -568,13 +652,13 @@ function renderCart(name, meta, unitPrice){
           </div>
           <button class="rm" id="cartRemove">Remove</button>
         </div>
-        <div class="pr">from $${unitPrice}</div>
+        <div class="pr">$${unitPrice}</div>
       </div>${padRow}
     </div>
     ${upsell}
     <div class="cart-foot">
-      <div class="sub-row"><span>Subtotal</span><b>from $${subtotal}</b></div>
-      <div class="ship-note">Exact size pricing &amp; shipping are confirmed at checkout.</div>
+      <div class="sub-row"><span>Subtotal</span><b>$${subtotal}</b></div>
+      <div class="ship-note">Shipping is confirmed at checkout.</div>
       <a href="#" class="btn btn-primary">Go to checkout</a>
       <p class="returns-mini">In-person: 2-day returns, 1-week exchanges. Online: 30-day returns. Custom rugs are final sale.</p>
     </div>`;

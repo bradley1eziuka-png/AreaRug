@@ -16,7 +16,7 @@
   --accent-deep: #4d3d1569;
   --accent-tint: #f9f3e5;        /* pale gold wash */
   --accent-tint-2:#f2e8ce;
-  --gold-light: #9d8a3e;         /* lighter true-to-sign gold (3.3:1) for decorative accents only: badge outlines, icons, large display numbers — never small text or button fills */
+  --gold-light: #c89745;         /* sampled directly from the real logo file (2.6:1 on white — decorative only): badge outlines, icons, large display numbers, rug-fill icon color — never small text or button fills */
 
   --ink: #141414;
   --ink-80: #141414cc;
@@ -363,6 +363,159 @@ h1,h2,h3,p{ margin:0; }
 .reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.in{ opacity:1; transform:none; }
 @media (prefers-reduced-motion:reduce){ .reveal{ opacity:1; transform:none; transition:none; } html{ scroll-behavior:auto; } }
+
+/* ============================================================
+   Logo lockup (replaces text wordmark)
+   ============================================================ */
+.wordmark-logo{ height:26px; width:auto; display:block; }
+@media (max-width:720px){ .wordmark-logo{ height:22px; } }
+
+/* ============================================================
+   Overlapping cart-bag icon with count badge
+   ============================================================ */
+.cart-btn{ position:relative; }
+.cart-btn .bag-icon{ width:22px; height:22px; stroke:currentColor; stroke-width:1.6; fill:none; }
+.cart-btn .count{
+  position:absolute; top:2px; right:0; margin-left:0;
+  min-width:16px; height:16px; padding:0 3px; border-radius:99px;
+  background:var(--accent); color:#fff; font-size:.6rem; font-weight:700;
+  display:inline-flex; align-items:center; justify-content:center;
+  box-shadow:0 0 0 2px var(--bg);
+}
+
+/* ============================================================
+   Expanded primary nav (8 items) — desktop
+   ============================================================ */
+.primary-nav ul{ gap:clamp(1rem,2.1vw,2.1rem); }
+.primary-nav a{ font-size:.82rem; white-space:nowrap; }
+
+/* ============================================================
+   Accordion (Size / Product Details / Returns / Washing & Care)
+   ============================================================ */
+.acc{ border-top:1px solid var(--rule); }
+.acc:last-child{ border-bottom:1px solid var(--rule); }
+.acc-head{ width:100%; display:flex; align-items:center; justify-content:space-between; padding:1.1rem 0; text-align:left; font-size:.95rem; font-weight:600; }
+.acc-head .chev{ width:16px; height:16px; stroke:var(--ink-70); stroke-width:1.6; fill:none; transition:transform .25s var(--ease); flex-shrink:0; }
+.acc.open .acc-head .chev{ transform:rotate(180deg); }
+.acc-panel{ overflow:hidden; max-height:0; transition:max-height .3s var(--ease); }
+.acc.open .acc-panel{ max-height:2000px; }
+.acc-panel-inner{ padding:0 0 1.5rem; }
+
+/* ============================================================
+   Detailed / representational accordion icons
+   ============================================================ */
+.pd-icons{ display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-bottom:1.3rem; }
+.pd-icon{ text-align:center; }
+.pd-icon svg{ width:32px; height:32px; margin-inline:auto; }
+.pd-icon span{ display:block; margin-top:.5rem; font-size:.72rem; font-weight:500; line-height:1.3; }
+
+/* ============================================================
+   Room-context gallery (product page)
+   ============================================================ */
+.room-ctx-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(.6rem,1.2vw,1rem); }
+.room-ctx-cell{ border-radius:5px; overflow:hidden; aspect-ratio:3/4; background:var(--panel); position:relative; }
+.room-ctx-cell img{ width:100%; height:100%; object-fit:cover; transition:transform .5s var(--ease); }
+.room-ctx-cell:hover img{ transform:scale(1.04); }
+.room-ctx-cell .rc-label{ position:absolute; left:.7rem; bottom:.7rem; background:rgba(255,255,255,.92); color:var(--ink); font-size:.7rem; font-weight:600; padding:.32rem .6rem; border-radius:99px; }
+
+/* ============================================================
+   Why You'll Enjoy These Rugs (visual-first, minimal copy)
+   ============================================================ */
+.enjoy-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1rem,2vw,1.6rem); }
+.enjoy-card{}
+.enjoy-media{ border-radius:6px; overflow:hidden; aspect-ratio:4/5; background:var(--panel); }
+.enjoy-media img{ width:100%; height:100%; object-fit:cover; }
+.enjoy-card h3{ font-family:var(--serif); font-weight:500; font-size:1.15rem; margin-top:1rem; }
+.enjoy-card p{ font-size:.85rem; color:var(--ink-55); margin-top:.3rem; line-height:1.5; }
+
+/* ============================================================
+   Homepage — showroom section (editorial / stacked pattern)
+   ============================================================ */
+.showroom-editorial{ }
+.se-intro{ max-width:60ch; margin-bottom:clamp(2rem,4vw,3rem); }
+.se-intro h2{ font-family:var(--serif); font-weight:400; font-size:clamp(1.6rem,2.5vw,2.2rem); line-height:1.08; letter-spacing:-.015em; white-space:nowrap; }
+@media (max-width:900px){ .se-intro h2{ white-space:normal; } }
+.se-intro p{ color:var(--ink-55); font-size:.95rem; margin-top:.6rem; max-width:52ch; }
+.se-row{ display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(1.5rem,4vw,4rem); align-items:center; padding:clamp(1.2rem,2.4vw,1.8rem) 0; }
+.se-row.rev{ grid-template-columns:.85fr 1.15fr; }
+.se-row.rev .se-media{ order:2; }
+.se-media{ border-radius:6px; overflow:hidden; aspect-ratio:16/10; background:var(--panel); }
+.se-media img{ width:100%; height:100%; object-fit:cover; }
+.se-copy .num{ font-family:var(--serif); font-size:.85rem; color:var(--gold-light); }
+.se-copy h3{ font-family:var(--serif); font-weight:500; font-size:clamp(1.5rem,2.4vw,2rem); margin-top:.5rem; letter-spacing:-.015em; }
+.se-copy p{ color:var(--ink-70); font-size:1.02rem; line-height:1.65; margin-top:.9rem; max-width:38ch; }
+.se-copy .loc-mini{ margin-top:1.3rem; font-size:.88rem; color:var(--ink-55); padding-top:1.1rem; border-top:1px solid var(--rule); max-width:34ch; }
+.se-copy .loc-mini b{ color:var(--ink); font-weight:600; display:block; margin-bottom:.2rem; }
+.se-cta{ margin-top:clamp(1.5rem,3vw,2.5rem); text-align:center; }
+@media (max-width:1000px){
+  .se-row,.se-row.rev{ grid-template-columns:1fr; }
+  .se-row.rev .se-media{ order:0; }
+}
+
+/* ============================================================
+   Homepage — Michigan-made recognition (visual-first)
+   ============================================================ */
+.recognition{ background:var(--paper); border-block:1px solid var(--rule); }
+.recog-head{ text-align:center; max-width:56ch; margin-inline:auto; }
+.recog-head h2{ font-family:var(--serif); font-weight:400; font-size:clamp(1.9rem,3vw,2.5rem); letter-spacing:-.02em; }
+.recog-head p{ color:var(--ink-55); font-size:.95rem; margin-top:.6rem; }
+.recog-grid{ display:grid; grid-template-columns:1.2fr .8fr; gap:clamp(1.2rem,3vw,2rem); margin-top:clamp(2rem,4vw,2.8rem); align-items:stretch; }
+.recog-video{ position:relative; border-radius:6px; overflow:hidden; background:#1c160d; aspect-ratio:16/9; }
+.recog-video iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+.recog-video .v-unmute{ z-index:2; }
+.recog-video .yt-cover{ position:absolute; inset:0; z-index:1; cursor:pointer; background:transparent; }
+.recog-side{ display:flex; flex-direction:column; gap:clamp(.8rem,1.6vw,1.2rem); }
+.recog-badges{ display:flex; flex-wrap:wrap; gap:.6rem; }
+.recog-media-row{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(.6rem,1.2vw,1rem); flex:1; }
+.recog-photo{ border-radius:5px; overflow:hidden; background:var(--panel); min-height:110px; }
+.recog-photo img{ width:100%; height:100%; object-fit:cover; }
+@media (max-width:1000px){ .recog-grid{ grid-template-columns:1fr; } }
+
+/* ============================================================
+   Showrooms — visit steps with image
+   ============================================================ */
+.visit-step .visit-media{ width:100%; aspect-ratio:4/3; border-radius:6px; overflow:hidden; background:var(--panel); margin-bottom:.9rem; }
+.visit-step .visit-media img{ width:100%; height:100%; object-fit:cover; }
+.visit-step .visit-icon{ position:relative; margin-top:-38px; margin-inline:auto; background:var(--bg); box-shadow:0 0 0 4px var(--bg); }
+@media (max-width:1000px){
+  .visit-step .visit-media{ grid-row:1; grid-column:1/-1; margin-bottom:.6rem; aspect-ratio:16/9; }
+  .visit-step .visit-icon{ margin-top:0; grid-row:2; }
+  .visit-step h3{ grid-row:2; }
+  .visit-step .visit-num{ grid-row:2; }
+}
+
+/* ============================================================
+   Showrooms — two-showroom gallery pattern (editorial, large-format)
+   ============================================================ */
+.showroom-gallery{}
+.sg-head{ max-width:60ch; }
+.sg-head h2{ font-family:var(--serif); font-weight:400; font-size:var(--fs-heading); letter-spacing:-.015em; }
+.sg-head p{ color:var(--ink-55); font-size:.95rem; margin-top:.6rem; }
+.sg-feature{ position:relative; border-radius:6px; overflow:hidden; aspect-ratio:21/9; margin-top:clamp(1.6rem,3vw,2.4rem); background:var(--panel); }
+.sg-feature img{ width:100%; height:100%; object-fit:cover; }
+.sg-feature .sg-caption{ position:absolute; left:0; right:0; bottom:0; padding:clamp(1.2rem,3vw,2rem); background:linear-gradient(0deg, rgba(20,16,9,.72) 0%, rgba(20,16,9,0) 70%); color:#fff; }
+.sg-feature .sg-caption .since{ font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-light); }
+.sg-feature .sg-caption h3{ font-family:var(--serif); font-weight:400; font-size:clamp(1.5rem,2.6vw,2.1rem); margin-top:.3rem; }
+.sg-strip{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(.7rem,1.4vw,1.1rem); margin-top:clamp(.7rem,1.4vw,1.1rem); }
+.sg-strip-cell{ border-radius:5px; overflow:hidden; aspect-ratio:4/3; background:var(--panel); }
+.sg-strip-cell img{ width:100%; height:100%; object-fit:cover; }
+.sg-info-row{ display:flex; justify-content:space-between; align-items:flex-end; margin-top:clamp(1.5rem,3vw,2.2rem); gap:1.5rem; flex-wrap:wrap; }
+.sg-info{ font-size:.9rem; color:var(--ink-70); }
+.sg-info b{ color:var(--ink); }
+
+/* ============================================================
+   About Us — timeline photo
+   ============================================================ */
+.timeline-with-photo{ display:grid; grid-template-columns:1fr 260px; gap:clamp(2rem,4vw,3.5rem); align-items:start; }
+.tl-photos{ display:flex; flex-direction:column; gap:1.2rem; position:sticky; top:calc(var(--nav-h) + 1.5rem); }
+.tl-photo{ border-radius:5px; overflow:hidden; aspect-ratio:4/5; background:var(--panel); }
+.tl-photo img{ width:100%; height:100%; object-fit:cover; }
+.tl-photo-cap{ font-size:.76rem; color:var(--ink-55); margin-top:.5rem; text-align:center; }
+@media (max-width:1000px){
+  .timeline-with-photo{ grid-template-columns:1fr; }
+  .tl-photos{ position:static; flex-direction:row; }
+  .tl-photo{ flex:1; aspect-ratio:1/1; }
+}
 
 /* ============================================================
    Responsive

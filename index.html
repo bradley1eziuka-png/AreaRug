@@ -30,7 +30,7 @@
       </button>
     </div>
 
-    <a href="index.html" class="wordmark">Area Rug&nbsp;<span class="co">Co.</span></a>
+    <a href="index.html" class="wordmark"><img class="wordmark-logo" src="assets/img/logo-black.png" alt="Area Rug Co." /></a>
 
     <div class="header-right">
       <a href="showrooms.html" class="ico-btn" aria-label="Showrooms">
@@ -41,7 +41,7 @@
         <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
       </button>
       <button class="ico-btn cart-btn" id="cartToggle" aria-label="Cart">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg>
+        <svg class="bag-icon" viewBox="0 0 24 24"><path d="M4 8h11l-.9 10.5a2 2 0 01-2 1.5H6.9a2 2 0 01-2-1.5L4 8z"/><path d="M7.5 8V6a3.5 3.5 0 017 0v2"/><path d="M13 12h6.5a1 1 0 011 1.1l-.9 8.4a1.6 1.6 0 01-1.6 1.5H14"/></svg>
         <span class="count">0</span>
       </button>
     </div>
@@ -49,10 +49,14 @@
 
   <nav class="primary-nav" id="primaryNav" aria-label="Primary">
     <ul>
-      <li><a href="product.html" class="is-active">Rugs</a></li>
-      <li><a href="index.html#designbar">The Design Bar</a></li>
+      <li><a href="product.html" class="is-active">Trending Rugs</a></li>
+      <li><a href="#">Size</a></li>
+      <li><a href="#">Room Type</a></li>
+      <li><a href="#">Rug Type</a></li>
+      <li><a href="#">Home Decor Accessories</a></li>
+      <li><a href="#">Clearance</a></li>
+      <li><a href="about.html">About Us</a></li>
       <li><a href="showrooms.html">Showrooms</a></li>
-      <li><a href="about.html">Guidance</a></li>
     </ul>
   </nav>
 </header>
@@ -143,7 +147,7 @@
       <img src="assets/img/about-designer.jpg" alt="At the entrance of an Area Rug Co. showroom in Michigan" style="object-position:center 28%;" />
     </div>
     <div class="about-copy reveal">
-      <h2>Made by a designer, not a marketplace.</h2>
+      <h2>Made by a designer,<br />not a marketplace.</h2>
       <p>Area Rug Co. was founded in 2021 by Tina Smart, our founder and creative director. She travels internationally to source and design original collections, then opens them to Michigan through two showrooms you can actually walk into.</p>
       <p>Woman-owned, showroom-first, and honest about pricing: from accessible everyday styles to premium natural-fiber pieces, chosen by someone who has stood on every one.</p>
       <div class="sign">Tina Smart<small>Founder &amp; Creative Director</small></div>
@@ -236,70 +240,75 @@
   </div>
 </section>
 
-<!-- ===================== SHOWROOMS ===================== -->
-<section class="sec wrap" id="showrooms">
-  <div class="sec-head reveal">
-    <div>
-      <h2 class="serif">Two showrooms. Thousands of rugs in person.</h2>
-      <p class="sub">Walk in, unroll anything, and take samples home the same day.</p>
+<!-- ===================== SHOWROOMS (editorial) ===================== -->
+<section class="sec wrap showroom-editorial" id="showrooms">
+  <div class="se-intro reveal">
+    <h2>Two showrooms. Thousands of rugs in person.</h2>
+    <p>No appointment, no pressure. Just two Michigan floors you can actually walk into.</p>
+  </div>
+
+  <div class="se-row reveal">
+    <div class="se-media"><img src="assets/img/rochester-night.jpg" alt="Area Rug Co. Rochester Hills showroom lit up at night" /></div>
+    <div class="se-copy">
+      <div class="num">01</div>
+      <h3>Rochester Hills</h3>
+      <p>Our largest floor, opened in 2024, with the full Design Bar for custom orders and thousands of rugs across every style and price point.</p>
+      <div class="loc-mini"><b>2741 S. Rochester Rd.</b> · Mon-Sat 10-7, Sun 11-6</div>
     </div>
   </div>
-  <div class="show-grid">
-    <div class="show-media reveal"><img src="assets/img/rochester-night.jpg" alt="Area Rug Co. Rochester Hills showroom lit up at night at 2741 S. Rochester Rd." /></div>
-    <div class="show-cards reveal">
-      <div class="show-card">
-        <div class="top"><h3>Birmingham</h3><span class="since">Since 2021</span></div>
-        <div class="addr">202 E. Maple Rd., Birmingham, MI 48009</div>
-        <div class="hours">Mon-Fri 10am-5pm &nbsp;·&nbsp; Sat 10am-6pm &nbsp;·&nbsp; Sun 11am-4pm</div>
-        <div class="note">Two hours of free parking at 222 Peabody.</div>
-      </div>
-      <div class="show-card">
-        <div class="top"><h3>Rochester Hills</h3><span class="since">Since 2024</span></div>
-        <div class="addr">2741 S. Rochester Rd., Rochester Hills, MI 48307</div>
-        <div class="hours">Mon-Sat 10am-7pm &nbsp;·&nbsp; Sun 11am-6pm</div>
-      </div>
-      <div class="show-actions">
-        <a href="showrooms.html" class="btn btn-primary">Visit a showroom</a>
-        <a href="tel:2488029296" class="link-underline">Call or text 248-802-9296</a>
-      </div>
+
+  <div class="se-row rev reveal">
+    <div class="se-media ph"><svg viewBox="0 0 24 24"><path d="M3 20h18M5 20V10l7-5 7 5v10"/><path d="M9 20v-6h6v6"/></svg><span class="ph-lbl">Birmingham · photography pending</span></div>
+    <div class="se-copy">
+      <div class="num">02</div>
+      <h3>Birmingham</h3>
+      <p>Where it started in 2021. A focused, walkable floor with two hours of free parking at the 222 Peabody structure.</p>
+      <div class="loc-mini"><b>202 E. Maple Rd.</b> · Mon-Fri 10-5, Sat 10-6, Sun 11-4</div>
     </div>
+  </div>
+
+  <div class="se-row reveal">
+    <div class="se-media"><img src="assets/img/showroom-wall.jpg" alt="Cowhide and patterned rugs displayed across a showroom wall" /></div>
+    <div class="se-copy">
+      <div class="num">03</div>
+      <h3>Walk the floor yourself</h3>
+      <p>Rugs layered on rugs, hides on the wall, samples you can take home the same day. This is what "thousands in stock" actually looks like.</p>
+    </div>
+  </div>
+
+  <div class="se-cta reveal">
+    <a href="showrooms.html" class="btn btn-primary">Visit a showroom</a>
   </div>
 </section>
 
-<!-- ===================== PRESS / CREDIBILITY ===================== -->
-<section class="press">
+<!-- ===================== MICHIGAN-MADE RECOGNITION (visual-first) ===================== -->
+<section class="recognition">
   <div class="wrap sec">
-    <p class="eyebrow reveal">Michigan-made recognition</p>
-    <div class="press-logos reveal">
-      <span>The Detroit News</span>
-      <span>WDIV Channel 4</span>
-      <span>Live in the D</span>
+    <div class="recog-head reveal">
+      <h2>Michigan-made recognition</h2>
+      <p>Real press, real certifications, no filler.</p>
     </div>
-    <p class="press-grant reveal">Winner, <b>Detroit Pistons Small Business Grant</b>: $10,000 awarded to woman-owned Michigan businesses.</p>
-    <div class="certs reveal">
-      <span class="cert"><span class="dot"></span>WBENC Certified · Women's Business Enterprise</span>
-      <span class="cert"><span class="dot"></span>GoodWeave Certified</span>
-      <span class="cert"><span class="dot"></span>Rochester Hills Chamber of Commerce</span>
+    <div class="recog-grid reveal">
+      <div class="recog-video">
+        <iframe id="recogYt" src="https://www.youtube.com/embed/i6D9Os6ALVM?autoplay=1&mute=1&loop=1&playlist=i6D9Os6ALVM&modestbranding=1&rel=0&enablejsapi=1" title="Area Rug Co. video feature" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <button class="v-unmute" id="ytUnmute">
+          <svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M23 9l-6 6M17 9l6 6"/></svg>
+          <span class="t">Sound off</span>
+        </button>
+      </div>
+      <div class="recog-side">
+        <div class="recog-badges">
+          <span class="cert"><span class="dot"></span>WBENC Certified</span>
+          <span class="cert"><span class="dot"></span>GoodWeave Certified</span>
+          <span class="cert"><span class="dot"></span>Rochester Hills Chamber</span>
+        </div>
+        <div class="recog-media-row">
+          <div class="recog-photo"><img src="assets/img/founder-showroom.jpg" alt="Tina Smart among rolls of rugs and fabric in the showroom" /></div>
+          <div class="recog-photo"><img src="assets/img/rows-hanging-rugs.jpg" alt="Rows of hanging rugs in the showroom" /></div>
+        </div>
+        <p style="font-size:.82rem;color:var(--ink-55);line-height:1.5;">Featured in The Detroit News, WDIV Channel 4, and Live in the D. Winner, Detroit Pistons Small Business Grant.</p>
+      </div>
     </div>
-    <!-- Customer reviews (Opinew) render here once the review audit is complete. Not fabricated for this prototype. -->
-  </div>
-</section>
-
-<!-- ===================== GALLERY ===================== -->
-<section class="sec wrap">
-  <div class="sec-head reveal">
-    <div>
-      <h2 class="serif">At home in Michigan.</h2>
-      <p class="sub">Real rooms, real rugs, photographed in our customers' homes and showrooms.</p>
-    </div>
-    <a href="#" class="link-underline">Tag @arearugco <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  </div>
-  <div class="gallery-grid reveal">
-    <div class="gcell tall"><img src="assets/img/styled-vignette.jpg" alt="A textured wool rug layered over a red rug, styled with a book and candle" /></div>
-    <div class="gcell"><img src="assets/img/lifestyle-1.jpg" alt="Rug styled in a Michigan home" /></div>
-    <div class="gcell"><img src="assets/img/lifestyle-2.jpg" alt="Rug detail" /></div>
-    <div class="gcell wide"><img src="assets/img/rows-hanging-rugs.jpg" alt="Rows of hanging rugs in the showroom" /></div>
-    <div class="gcell"><img src="assets/img/showroom-wall.jpg" alt="Cowhide and patterned rugs displayed across a showroom wall" /></div>
   </div>
 </section>
 
@@ -438,6 +447,21 @@ document.querySelectorAll('.v-unmute').forEach(btn => {
       : '<path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7M19 5a9 9 0 010 14"/>';
   });
 });
+
+/* YouTube embed unmute (postMessage API, mirrors the native-video unmute pattern) */
+const ytFrame = document.getElementById('recogYt');
+const ytBtn = document.getElementById('ytUnmute');
+let ytMuted = true;
+if (ytFrame && ytBtn) {
+  ytBtn.addEventListener('click', () => {
+    ytMuted = !ytMuted;
+    ytFrame.contentWindow.postMessage(JSON.stringify({ event:'command', func: ytMuted ? 'mute' : 'unMute', args:[] }), '*');
+    ytBtn.querySelector('.t').textContent = ytMuted ? 'Sound off' : 'Sound on';
+    ytBtn.querySelector('svg').innerHTML = ytMuted
+      ? '<path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M23 9l-6 6M17 9l6 6"/>'
+      : '<path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7M19 5a9 9 0 010 14"/>';
+  });
+}
 
 /* cart drawer */
 const overlay = document.getElementById('overlay');
