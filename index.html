@@ -291,6 +291,7 @@
     <div class="recog-grid reveal">
       <div class="recog-video">
         <iframe id="recogYt" src="https://www.youtube.com/embed/i6D9Os6ALVM?autoplay=1&mute=1&loop=1&playlist=i6D9Os6ALVM&modestbranding=1&rel=0&enablejsapi=1" title="Area Rug Co. video feature" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <button type="button" class="yt-cover" id="ytCover" aria-label="Play or pause video"></button>
         <button class="v-unmute" id="ytUnmute">
           <svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M23 9l-6 6M17 9l6 6"/></svg>
           <span class="t">Sound off</span>
@@ -451,15 +452,27 @@ document.querySelectorAll('.v-unmute').forEach(btn => {
 /* YouTube embed unmute (postMessage API, mirrors the native-video unmute pattern) */
 const ytFrame = document.getElementById('recogYt');
 const ytBtn = document.getElementById('ytUnmute');
+const ytCover = document.getElementById('ytCover');
 let ytMuted = true;
+let ytPlaying = true;
 if (ytFrame && ytBtn) {
-  ytBtn.addEventListener('click', () => {
+  ytBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     ytMuted = !ytMuted;
     ytFrame.contentWindow.postMessage(JSON.stringify({ event:'command', func: ytMuted ? 'mute' : 'unMute', args:[] }), '*');
     ytBtn.querySelector('.t').textContent = ytMuted ? 'Sound off' : 'Sound on';
     ytBtn.querySelector('svg').innerHTML = ytMuted
       ? '<path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M23 9l-6 6M17 9l6 6"/>'
       : '<path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7M19 5a9 9 0 010 14"/>';
+  });
+}
+if (ytFrame && ytCover) {
+  /* Transparent overlay in front of the iframe (iframe has pointer-events:none) so a
+     click never lands on YouTube's own title-bar/logo link and navigates off-site.
+     Instead it toggles play/pause in place via the embed's postMessage API. */
+  ytCover.addEventListener('click', () => {
+    ytPlaying = !ytPlaying;
+    ytFrame.contentWindow.postMessage(JSON.stringify({ event:'command', func: ytPlaying ? 'playVideo' : 'pauseVideo', args:[] }), '*');
   });
 }
 
