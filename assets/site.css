@@ -16,7 +16,7 @@
   --accent-deep: #4d3d1569;
   --accent-tint: #f9f3e5;        /* pale gold wash */
   --accent-tint-2:#f2e8ce;
-  --gold-light: #c89745;         /* sampled directly from the real logo file (2.6:1 on white — decorative only): badge outlines, icons, large display numbers, rug-fill icon color — never small text or button fills */
+  --gold-light: #c89745;         /* sampled directly from the real logo file (2.6:1 on white, decorative only): badge outlines, icons, large display numbers, rug-fill icon color, never small text or button fills */
 
   --ink: #141414;
   --ink-80: #141414cc;
@@ -384,7 +384,7 @@ h1,h2,h3,p{ margin:0; }
 }
 
 /* ============================================================
-   Expanded primary nav (8 items) — desktop
+   Expanded primary nav (8 items), desktop
    ============================================================ */
 .primary-nav ul{ gap:clamp(1rem,2.1vw,2.1rem); }
 .primary-nav a{ font-size:.82rem; white-space:nowrap; }
@@ -429,7 +429,7 @@ h1,h2,h3,p{ margin:0; }
 .enjoy-card p{ font-size:.85rem; color:var(--ink-55); margin-top:.3rem; line-height:1.5; }
 
 /* ============================================================
-   Homepage — showroom section (editorial / stacked pattern)
+   Homepage: showroom section (editorial / stacked pattern)
    ============================================================ */
 .showroom-editorial{ }
 .se-intro{ max-width:60ch; margin-bottom:clamp(2rem,4vw,3rem); }
@@ -439,7 +439,7 @@ h1,h2,h3,p{ margin:0; }
 .se-row{ display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(1.5rem,4vw,4rem); align-items:center; padding:clamp(1.2rem,2.4vw,1.8rem) 0; }
 .se-row.rev{ grid-template-columns:.85fr 1.15fr; }
 .se-row.rev .se-media{ order:2; }
-.se-media{ border-radius:6px; overflow:hidden; aspect-ratio:16/10; background:var(--panel); }
+.se-media{ border-radius:6px; overflow:hidden; aspect-ratio:4/3; background:var(--panel); }
 .se-media img{ width:100%; height:100%; object-fit:cover; }
 .se-copy .num{ font-family:var(--serif); font-size:.85rem; color:var(--gold-light); }
 .se-copy h3{ font-family:var(--serif); font-weight:500; font-size:clamp(1.5rem,2.4vw,2rem); margin-top:.5rem; letter-spacing:-.015em; }
@@ -453,7 +453,7 @@ h1,h2,h3,p{ margin:0; }
 }
 
 /* ============================================================
-   Homepage — Michigan-made recognition (visual-first)
+   Homepage: Michigan-made recognition (visual-first)
    ============================================================ */
 .recognition{ background:var(--paper); border-block:1px solid var(--rule); }
 .recog-head{ text-align:center; max-width:56ch; margin-inline:auto; }
@@ -472,41 +472,41 @@ h1,h2,h3,p{ margin:0; }
 @media (max-width:1000px){ .recog-grid{ grid-template-columns:1fr; } }
 
 /* ============================================================
-   Showrooms — visit steps with image
+   Showrooms: visit steps with image
    ============================================================ */
-.visit-step .visit-media{ width:100%; aspect-ratio:4/3; border-radius:6px; overflow:hidden; background:var(--panel); margin-bottom:.9rem; }
+.visit-step .visit-media{ width:100%; aspect-ratio:1/1; border-radius:6px; overflow:hidden; background:var(--panel); margin-bottom:.9rem; }
 .visit-step .visit-media img{ width:100%; height:100%; object-fit:cover; }
 .visit-step .visit-icon{ position:relative; margin-top:-38px; margin-inline:auto; background:var(--bg); box-shadow:0 0 0 4px var(--bg); }
 @media (max-width:1000px){
-  .visit-step .visit-media{ grid-row:1; grid-column:1/-1; margin-bottom:.6rem; aspect-ratio:16/9; }
+  .visit-step .visit-media{ grid-row:1; grid-column:1/-1; margin-bottom:.6rem; aspect-ratio:4/3; }
   .visit-step .visit-icon{ margin-top:0; grid-row:2; }
   .visit-step h3{ grid-row:2; }
   .visit-step .visit-num{ grid-row:2; }
 }
 
 /* ============================================================
-   Showrooms — two-showroom gallery pattern (editorial, large-format)
+   Showrooms: two-showroom gallery pattern (editorial, large-format)
    ============================================================ */
 .showroom-gallery{}
 .sg-head{ max-width:60ch; }
 .sg-head h2{ font-family:var(--serif); font-weight:400; font-size:var(--fs-heading); letter-spacing:-.015em; }
 .sg-head p{ color:var(--ink-55); font-size:.95rem; margin-top:.6rem; }
-.sg-feature{ position:relative; border-radius:6px; overflow:hidden; aspect-ratio:21/9; margin-top:clamp(1.6rem,3vw,2.4rem); background:var(--panel); }
+.sg-feature{ position:relative; border-radius:6px; overflow:hidden; aspect-ratio:4/3; margin-top:clamp(1.6rem,3vw,2.4rem); background:var(--panel); }
 .sg-feature img{ width:100%; height:100%; object-fit:cover; }
 .sg-feature .sg-caption{ position:absolute; left:0; right:0; bottom:0; padding:clamp(1.2rem,3vw,2rem); background:linear-gradient(0deg, rgba(20,16,9,.72) 0%, rgba(20,16,9,0) 70%); color:#fff; }
 .sg-feature .sg-caption .since{ font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-light); }
 .sg-feature .sg-caption h3{ font-family:var(--serif); font-weight:400; font-size:clamp(1.5rem,2.6vw,2.1rem); margin-top:.3rem; }
 .sg-strip{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(.7rem,1.4vw,1.1rem); margin-top:clamp(.7rem,1.4vw,1.1rem); }
-.sg-strip-cell{ border-radius:5px; overflow:hidden; aspect-ratio:4/3; background:var(--panel); }
+.sg-strip-cell{ border-radius:5px; overflow:hidden; aspect-ratio:1/1; background:var(--panel); }
 .sg-strip-cell img{ width:100%; height:100%; object-fit:cover; }
 .sg-info-row{ display:flex; justify-content:space-between; align-items:flex-end; margin-top:clamp(1.5rem,3vw,2.2rem); gap:1.5rem; flex-wrap:wrap; }
 .sg-info{ font-size:.9rem; color:var(--ink-70); }
 .sg-info b{ color:var(--ink); }
 
 /* ============================================================
-   About Us — timeline photo
+   About Us: timeline photo
    ============================================================ */
-.timeline-with-photo{ display:grid; grid-template-columns:1fr 260px; gap:clamp(2rem,4vw,3.5rem); align-items:start; }
+.timeline-with-photo{ display:grid; grid-template-columns:1fr 440px; gap:clamp(2rem,4vw,3.5rem); align-items:start; }
 .tl-photos{ display:flex; flex-direction:column; gap:1.2rem; position:sticky; top:calc(var(--nav-h) + 1.5rem); }
 .tl-photo{ border-radius:5px; overflow:hidden; aspect-ratio:4/5; background:var(--panel); }
 .tl-photo img{ width:100%; height:100%; object-fit:cover; }

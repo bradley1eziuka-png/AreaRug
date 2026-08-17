@@ -286,11 +286,10 @@
   <div class="wrap sec">
     <div class="recog-head reveal">
       <h2>Michigan-made recognition</h2>
-      <p>Real press, real certifications, no filler.</p>
     </div>
     <div class="recog-grid reveal">
       <div class="recog-video">
-        <iframe id="recogYt" src="https://www.youtube.com/embed/i6D9Os6ALVM?autoplay=1&mute=1&loop=1&playlist=i6D9Os6ALVM&modestbranding=1&rel=0&enablejsapi=1" title="Area Rug Co. video feature" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe id="recogYt" src="https://www.youtube.com/embed/i6D9Os6ALVM?autoplay=1&mute=1&loop=1&playlist=i6D9Os6ALVM&modestbranding=1&rel=0&enablejsapi=1&cc_load_policy=0&iv_load_policy=3" title="Area Rug Co. video feature" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         <button type="button" class="yt-cover" id="ytCover" aria-label="Play or pause video"></button>
         <button class="v-unmute" id="ytUnmute">
           <svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M23 9l-6 6M17 9l6 6"/></svg>
@@ -298,11 +297,6 @@
         </button>
       </div>
       <div class="recog-side">
-        <div class="recog-badges">
-          <span class="cert"><span class="dot"></span>WBENC Certified</span>
-          <span class="cert"><span class="dot"></span>GoodWeave Certified</span>
-          <span class="cert"><span class="dot"></span>Rochester Hills Chamber</span>
-        </div>
         <div class="recog-media-row">
           <div class="recog-photo"><img src="assets/img/founder-showroom.jpg" alt="Tina Smart among rolls of rugs and fabric in the showroom" /></div>
           <div class="recog-photo"><img src="assets/img/rows-hanging-rugs.jpg" alt="Rows of hanging rugs in the showroom" /></div>
@@ -455,6 +449,13 @@ const ytBtn = document.getElementById('ytUnmute');
 const ytCover = document.getElementById('ytCover');
 let ytMuted = true;
 let ytPlaying = true;
+if (ytFrame) {
+  /* cc_load_policy=0 alone doesn't always suppress captions this video has forced on;
+     explicitly unload the captions module once the player has initialized, and again
+     shortly after (autoplay/loop can re-trigger it on the first loop restart). */
+  const ytHideCaptions = () => ytFrame.contentWindow.postMessage(JSON.stringify({ event:'command', func:'unloadModule', args:['captions'] }), '*');
+  ytFrame.addEventListener('load', () => { setTimeout(ytHideCaptions, 800); setTimeout(ytHideCaptions, 2500); });
+}
 if (ytFrame && ytBtn) {
   ytBtn.addEventListener('click', (e) => {
     e.stopPropagation();

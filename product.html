@@ -20,6 +20,7 @@
 .pdp-main .ph{ position:absolute; inset:0; }
 .pdp-thumbs{ display:grid; grid-template-columns:repeat(4,1fr); gap:.7rem; margin-top:.7rem; }
 .pdp-thumb{ aspect-ratio:1/1; border-radius:4px; overflow:hidden; background:var(--accent-tint); position:relative; }
+.pdp-thumb img{ width:100%; height:100%; object-fit:cover; }
 .buybox .collection{ font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:.6rem; }
 .buybox h1{ font-family:var(--serif); font-weight:400; font-size:clamp(2rem,3.4vw,2.7rem); letter-spacing:-.02em; line-height:1.05; }
 .buybox .price{ font-size:1.3rem; margin-top:.9rem; }
@@ -177,10 +178,10 @@
         <div class="ph"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 9h16M4 15h16M9 4v16M15 4v16"/></svg><span class="ph-lbl">Product photography pending</span></div>
       </div>
       <div class="pdp-thumbs">
-        <div class="pdp-thumb ph"><svg viewBox="0 0 24 24" style="width:22px;height:22px"><rect x="4" y="4" width="16" height="16" rx="1"/></svg></div>
-        <div class="pdp-thumb ph"><svg viewBox="0 0 24 24" style="width:22px;height:22px"><circle cx="12" cy="12" r="7"/></svg></div>
-        <div class="pdp-thumb ph"><svg viewBox="0 0 24 24" style="width:22px;height:22px"><path d="M4 12h16M12 4v16"/></svg></div>
-        <div class="pdp-thumb ph"><svg viewBox="0 0 24 24" style="width:22px;height:22px"><rect x="5" y="5" width="14" height="14" rx="1"/></svg></div>
+        <div class="pdp-thumb"><img src="assets/img/room-living.jpg" alt="A rug grounding a neutral living room" /></div>
+        <div class="pdp-thumb"><img src="assets/img/room-bedroom-ctx.jpg" alt="A rug at the foot of a bed" /></div>
+        <div class="pdp-thumb"><img src="assets/img/room-dining.jpg" alt="A rug under a round dining table" /></div>
+        <div class="pdp-thumb"><img src="assets/img/room-hallway.jpg" alt="A runner rug in an entry hallway" /></div>
       </div>
     </div>
 
@@ -194,7 +195,7 @@
       <!-- ===== Size accordion (open by default) ===== -->
       <div class="acc open" id="accSize">
         <button type="button" class="acc-head">
-          <span>Size — <span id="sizeSelectedLabel">5' x 8'</span></span>
+          <span>Size · <span id="sizeSelectedLabel">5' x 8'</span></span>
           <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="acc-panel">
@@ -372,24 +373,20 @@
   <div class="sec-head reveal" style="justify-content:center;text-align:center;">
     <div style="margin-inline:auto;">
       <h2 class="serif">Why you'll enjoy this rug</h2>
-      <p class="sub" style="margin-inline:auto;">Real reasons, not marketing copy.</p>
     </div>
   </div>
   <div class="enjoy-grid reveal">
     <div class="enjoy-card">
       <div class="enjoy-media"><img src="assets/img/room-living.jpg" alt="A rug unrolled flat in a living room, ready to use" /></div>
       <h3>No assembly</h3>
-      <p>It arrives rolled. Unroll it, let it settle for a day, and it lies flat.</p>
     </div>
     <div class="enjoy-card">
       <div class="enjoy-media"><img src="assets/img/rug-natural.jpg" alt="Close-up of a hand-knotted wool rug's texture" /></div>
       <h3>Built to last</h3>
-      <p>Hand-knotted 100% wool is one of the most durable constructions made.</p>
     </div>
     <div class="enjoy-card">
       <div class="enjoy-media"><img src="assets/img/rug-bedroom.jpg" alt="Soft, low-pile rug in a calm bedroom" /></div>
       <h3>Comfortable underfoot</h3>
-      <p>A low, dense pile that's warm to walk on without catching furniture or doors.</p>
     </div>
   </div>
 </section>
