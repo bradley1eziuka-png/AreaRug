@@ -367,7 +367,7 @@ h1,h2,h3,p{ margin:0; }
 /* ============================================================
    Logo lockup (replaces text wordmark)
    ============================================================ */
-.wordmark-logo{ height:26px; width:auto; display:block; }
+.wordmark-logo{ height:34px; width:auto; display:block; }
 @media (max-width:720px){ .wordmark-logo{ height:22px; } }
 
 /* ============================================================
