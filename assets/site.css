@@ -501,7 +501,7 @@ h1,h2,h3,p{ margin:0; }
   .visit-step .visit-icon{ margin-top:0; grid-row:2; }
   .visit-step h3{ grid-row:2; }
   .visit-step .visit-num{ grid-row:2; }
-  .visit-step:nth-child(4) .visit-media img{ object-position:center top; }
+  .visit-step:nth-child(4) .visit-media img{ object-position:center 15%; }
 }
 
 /* ============================================================
