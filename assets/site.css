@@ -429,6 +429,18 @@ h1,h2,h3,p{ margin:0; }
 .enjoy-card p{ font-size:.85rem; color:var(--ink-55); margin-top:.3rem; line-height:1.5; }
 
 /* ============================================================
+   Homepage: Shop by Room (grid of room-category tiles)
+   ============================================================ */
+.sbr-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(.8rem,1.6vw,1.3rem); }
+.sbr-tile{ position:relative; aspect-ratio:4/5; border-radius:6px; overflow:hidden; background:var(--panel); display:block; }
+.sbr-tile img{ width:100%; height:100%; object-fit:cover; transition:transform .5s var(--ease); }
+.sbr-tile:hover img{ transform:scale(1.045); }
+.sbr-tile .sbr-scrim{ position:absolute; inset:0; background:linear-gradient(0deg, rgba(20,16,9,.66) 0%, rgba(20,16,9,0) 55%); }
+.sbr-tile .sbr-label{ position:absolute; left:1rem; bottom:.9rem; color:#fff; font-family:var(--serif); font-weight:500; font-size:1.15rem; letter-spacing:-.01em; }
+@media (max-width:1000px){ .sbr-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:600px){ .sbr-grid{ grid-template-columns:1fr 1fr; } .sbr-tile{ aspect-ratio:1/1; } }
+
+/* ============================================================
    Homepage: showroom section (editorial / stacked pattern)
    ============================================================ */
 .showroom-editorial{ }
