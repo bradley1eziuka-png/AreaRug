@@ -418,6 +418,13 @@ h1,h2,h3,p{ margin:0; }
 .room-ctx-cell:hover img{ transform:scale(1.04); }
 .room-ctx-cell .rc-label{ position:absolute; left:.7rem; bottom:.7rem; background:rgba(255,255,255,.92); color:var(--ink); font-size:.7rem; font-weight:600; padding:.32rem .6rem; border-radius:99px; }
 
+@media (max-width:640px){
+  .room-ctx-grid{ grid-template-columns:repeat(2,1fr); gap:.8rem 1.1rem; }
+  .room-ctx-cell{ aspect-ratio:auto; background:none; }
+  .room-ctx-cell img{ display:block; width:100%; height:auto; aspect-ratio:4/3; border-radius:5px; }
+  .room-ctx-cell .rc-label{ position:static; display:block; width:100%; background:none; font-size:.82rem; font-weight:600; padding:.55rem 0 0; border-radius:0; text-align:left; }
+}
+
 /* ============================================================
    Why You'll Enjoy These Rugs (visual-first, minimal copy)
    ============================================================ */
@@ -494,6 +501,7 @@ h1,h2,h3,p{ margin:0; }
   .visit-step .visit-icon{ margin-top:0; grid-row:2; }
   .visit-step h3{ grid-row:2; }
   .visit-step .visit-num{ grid-row:2; }
+  .visit-step:nth-child(4) .visit-media img{ object-position:center top; }
 }
 
 /* ============================================================
