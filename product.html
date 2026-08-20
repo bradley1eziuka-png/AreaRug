@@ -27,6 +27,8 @@
 .buybox .price{ font-size:1.3rem; margin-top:.9rem; }
 .buybox .price .now{ font-weight:600; }
 .buybox .price .from{ font-size:.9rem; color:var(--ink-55); font-weight:400; }
+.pay-installments{ font-size:.85rem; color:var(--ink-55); margin-top:.6rem; }
+.pay-installments .pay-link{ color:var(--accent); font-weight:600; }
 .buybox .blurb{ color:var(--ink-70); margin-top:1.1rem; line-height:1.62; max-width:48ch; }
 .opt-label{ font-size:.82rem; font-weight:600; margin:1.6rem 0 .6rem; display:flex; justify-content:space-between; align-items:baseline; }
 .opt-label .help{ font-weight:400; color:var(--ink-55); font-size:.78rem; }
@@ -92,10 +94,7 @@
 .sgm-body{ padding:1.5rem; }
 .sgm-panel[hidden]{ display:none; }
 .sgm-copy{ color:var(--ink-70); font-size:.92rem; line-height:1.6; max-width:60ch; }
-.sgm-diagrams{ display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem; margin-top:1.3rem; }
-.sgm-diagram{ border:1px solid var(--rule); border-radius:6px; padding:.8rem .5rem; text-align:center; }
-.sgm-diagram svg{ width:100%; height:44px; stroke:var(--ink-55); stroke-width:1.4; fill:none; }
-.sgm-diagram span{ display:block; margin-top:.5rem; font-size:.8rem; font-weight:600; }
+.sgm-chart{ width:100%; height:auto; border-radius:6px; display:block; margin-top:1.3rem; }
 
 /* ---- Product details / care ---- */
 .pd-icons{ display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-bottom:1.3rem; }
@@ -114,7 +113,6 @@
   .sizing-grid{ grid-template-columns:1fr; }
   .specs-grid{ grid-template-columns:1fr; gap:2.5rem; }
   .pd-icons{ grid-template-columns:repeat(2,1fr); }
-  .sgm-diagrams{ grid-template-columns:repeat(2,1fr); }
 }
 </style>
 </head>
@@ -191,6 +189,7 @@
       <div class="collection">Adoni Collection</div>
       <h1>Adoni Charcoal</h1>
       <div class="price"><span class="now">$110.00</span></div>
+      <p class="pay-installments">or 4 interest-free payments of $27.50 with <span class="pay-link">Shop Pay</span></p>
       <p class="blurb">A hand-knotted rug in 100% wool with a low, dense pile that holds up in living and dining rooms. Knotted by hand in India and finished at a 0.625&Prime; pile height, it feels substantial underfoot without catching chair legs or doors.</p>
 
       <!-- ===== Size accordion (open by default) ===== -->
@@ -248,7 +247,6 @@
 
       <div class="buy-actions" style="margin-top:1.4rem;">
         <button class="btn btn-primary" id="addToCart">Add to cart</button>
-        <button class="btn btn-outline" id="addSample">Order a $5 sample</button>
       </div>
       <p style="font-size:.78rem;color:var(--ink-55);margin-top:.8rem;">In-person returns within 2 days, online within 30. <a href="#accReturns" class="link-underline" style="font-size:.78rem;" onclick="document.getElementById('accReturns').classList.add('open')">Full policy</a></p>
 
@@ -331,10 +329,9 @@
 
 <!-- ===================== ROOM CONTEXT ===================== -->
 <section class="sec wrap" style="padding-top:0;">
-  <div class="sec-head reveal">
-    <div>
+  <div class="sec-head reveal" style="justify-content:center;text-align:center;">
+    <div style="margin-inline:auto;">
       <h2 class="serif">Rugs, in the room.</h2>
-      <p class="sub">A feel for scale before you measure your own space.</p>
     </div>
   </div>
   <div class="room-ctx-grid reveal">
@@ -409,22 +406,22 @@
   </div>
   <div class="prod-grid reveal">
     <a class="card" href="product.html">
-      <div class="card-media"><div class="ph"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 9h16M4 15h16M9 4v16M15 4v16"/></svg><span class="ph-lbl">Photography pending</span></div><span class="sample">Bestseller</span><span class="card-add">Add sample</span></div>
+      <div class="card-media"><img src="assets/img/styled-vignette.jpg" alt="Harlowe 54 rug texture, styled with pouf and side table" style="width:100%;height:100%;object-fit:cover;" /><span class="sample">Bestseller</span><span class="card-add">Add sample</span></div>
       <div class="card-name">Harlowe 54</div><div class="card-meta">Multiple sizes</div>
       <div class="card-price"><span class="now">from $330</span><span class="was">$1,100</span><span class="save">Save 70%</span></div>
     </a>
     <a class="card" href="product.html">
-      <div class="card-media"><div class="ph"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 9h16M4 15h16M9 4v16M15 4v16"/></svg><span class="ph-lbl">Photography pending</span></div><span class="sample">Performance</span><span class="card-add">Add sample</span></div>
+      <div class="card-media"><img src="assets/img/rug-runners.jpg" alt="Abyss 22083-095 rolled rug texture" style="width:100%;height:100%;object-fit:cover;" /><span class="sample">Performance</span><span class="card-add">Add sample</span></div>
       <div class="card-name">Abyss 22083-095</div><div class="card-meta">Polypropylene · stain-resistant</div>
       <div class="card-price"><span class="now">from $83</span></div>
     </a>
     <a class="card" href="product.html">
-      <div class="card-media"><div class="ph"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 9h16M4 15h16M9 4v16M15 4v16"/></svg><span class="ph-lbl">Photography pending</span></div><span class="sample">In stock</span><span class="card-add">Add sample</span></div>
+      <div class="card-media"><img src="assets/img/rug-bedroom.jpg" alt="Bloom Terra rug texture and pile" style="width:100%;height:100%;object-fit:cover;" /><span class="sample">In stock</span><span class="card-add">Add sample</span></div>
       <div class="card-name">Bloom Terra</div><div class="card-meta">Multiple sizes</div>
       <div class="card-price"><span class="now">from $25</span></div>
     </a>
     <a class="card" href="product.html">
-      <div class="card-media"><div class="ph"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 9h16M4 15h16M9 4v16M15 4v16"/></svg><span class="ph-lbl">Photography pending</span></div><span class="card-add">Add sample</span></div>
+      <div class="card-media"><img src="assets/img/pdp-adoni-charcoal.jpg" alt="Adoni Ivory rug texture and pile" style="width:100%;height:100%;object-fit:cover;" /><span class="card-add">Add sample</span></div>
       <div class="card-name">Adoni Ivory</div><div class="card-meta">100% wool · hand-knotted</div>
       <div class="card-price"><span class="now">from $110</span></div>
     </a>
@@ -515,27 +512,15 @@
   <div class="sgm-body">
     <div class="sgm-panel" data-panel="living">
       <p class="sgm-copy">Front legs of every seat on the rug at minimum, all legs on for a more grounded look. In an open floor plan, a bigger rug helps define the seating area from the rest of the room.</p>
-      <div class="sgm-diagrams">
-        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="6" y="6" width="52" height="32" rx="2"/><rect x="14" y="10" width="36" height="12" rx="3"/><path d="M32 10v12"/><circle cx="32" cy="28" r="5"/></svg><span>5' x 8'</span></div>
-        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="4" y="6" width="56" height="32" rx="2"/><rect x="16" y="10" width="32" height="10" rx="3"/><path d="M28 10v10M36 10v10"/><rect x="10" y="26" width="10" height="8" rx="2"/><rect x="44" y="26" width="10" height="8" rx="2"/></svg><span>6' x 9'</span></div>
-        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="4" y="4" width="56" height="36" rx="2"/><path d="M14 12h30v10H24v14H14z"/></svg><span>8' x 10'</span></div>
-      </div>
+      <img class="sgm-chart" src="assets/img/sizechart-living.jpg" alt="Living room rug size chart: recommended rug sizes for 3-seat sofas, sectionals, and corner seating arrangements" />
     </div>
     <div class="sgm-panel" data-panel="dining" hidden>
       <p class="sgm-copy">Leave about 24 inches of rug showing beyond the table on every side, so chairs stay on the rug even when pulled out to sit down.</p>
-      <div class="sgm-diagrams">
-        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="12" y="10" width="40" height="24" rx="2"/><rect x="20" y="15" width="24" height="14" rx="2"/><circle cx="20" cy="12" r="1.3" fill="currentColor"/><circle cx="44" cy="12" r="1.3" fill="currentColor"/><circle cx="20" cy="32" r="1.3" fill="currentColor"/><circle cx="44" cy="32" r="1.3" fill="currentColor"/></svg><span>6' x 9'</span></div>
-        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="6" y="6" width="52" height="32" rx="2"/><rect x="16" y="12" width="32" height="20" rx="2"/><circle cx="16" cy="9" r="1.3" fill="currentColor"/><circle cx="32" cy="9" r="1.3" fill="currentColor"/><circle cx="48" cy="9" r="1.3" fill="currentColor"/><circle cx="16" cy="35" r="1.3" fill="currentColor"/><circle cx="32" cy="35" r="1.3" fill="currentColor"/><circle cx="48" cy="35" r="1.3" fill="currentColor"/></svg><span>8' x 10'</span></div>
-        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="4" y="4" width="56" height="36" rx="2"/><rect x="18" y="14" width="28" height="16" rx="2"/><circle cx="18" cy="10" r="1.4" fill="currentColor"/><circle cx="32" cy="10" r="1.4" fill="currentColor"/><circle cx="46" cy="10" r="1.4" fill="currentColor"/><circle cx="18" cy="34" r="1.4" fill="currentColor"/><circle cx="32" cy="34" r="1.4" fill="currentColor"/><circle cx="46" cy="34" r="1.4" fill="currentColor"/></svg><span>9' x 12'</span></div>
-      </div>
+      <img class="sgm-chart" src="assets/img/sizechart-dining.jpg" alt="Dining room rug size chart: recommended rug sizes for 48 to 96 inch tables, round and rectangular" />
     </div>
     <div class="sgm-panel" data-panel="bedroom" hidden>
       <p class="sgm-copy">Extend the rug 18 to 24 inches past the sides and foot of the bed, so your feet land on wool instead of cold floor when you get up.</p>
-      <div class="sgm-diagrams">
-        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="14" y="6" width="36" height="32" rx="2"/><rect x="20" y="10" width="24" height="22" rx="2"/><rect x="22" y="12" width="8" height="6" rx="1.5"/><rect x="34" y="12" width="8" height="6" rx="1.5"/></svg><span>5' x 8'</span></div>
-        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="8" y="5" width="48" height="34" rx="2"/><rect x="16" y="9" width="32" height="26" rx="2"/><rect x="18" y="11" width="10" height="7" rx="1.5"/><rect x="36" y="11" width="10" height="7" rx="1.5"/></svg><span>6' x 9'</span></div>
-        <div class="sgm-diagram"><svg viewBox="0 0 64 44"><rect x="4" y="4" width="56" height="36" rx="2"/><rect x="13" y="8" width="38" height="28" rx="2"/><rect x="16" y="11" width="12" height="8" rx="1.5"/><rect x="36" y="11" width="12" height="8" rx="1.5"/></svg><span>8' x 10'</span></div>
-      </div>
+      <img class="sgm-chart" src="assets/img/sizechart-bedroom.jpg" alt="Bedroom rug size chart: recommended rug sizes for twin, queen, and king beds" />
     </div>
   </div>
 </div>
@@ -613,13 +598,13 @@ document.querySelectorAll('.acc-head').forEach(head => {
 });
 
 /* add to cart -> fill drawer, with qty stepper + real rug-pad upsell */
-const RUG_ICON = '<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 9h16M4 15h16M9 4v16M15 4v16"/></svg>';
 const PAD_ICON = '<svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="10" rx="2"/><path d="M4 8l2-3h12l2 3"/></svg>';
 const UNDERPAD = { name: 'Premium Under-pad', meta: '6mm PVC, multiple sizes', unitPrice: 8, label: 'from $8' };
 let cartQty = 1;
 let padAdded = false;
 
-function renderCart(name, meta, unitPrice){
+const PAY_BADGES = ['Amex','Visa','Discover','Mastercard'].map(n => `<span class="pay-badge">${n}</span>`).join('');
+function renderCart(name, meta, unitPrice, img){
   const padRow = padAdded ? `
       <div class="cart-line" id="cartLinePad">
         <div class="thumb">${PAD_ICON}</div>
@@ -639,7 +624,7 @@ function renderCart(name, meta, unitPrice){
   cartBody.innerHTML = `
     <div class="cart-items">
       <div class="cart-line" id="cartLineMain">
-        <div class="thumb">${RUG_ICON}</div>
+        <div class="thumb"><img src="${img}" alt="${name}" /></div>
         <div>
           <div class="nm">${name}</div>
           <div class="mt">${meta}</div>
@@ -655,41 +640,26 @@ function renderCart(name, meta, unitPrice){
     </div>
     ${upsell}
     <div class="cart-foot">
+      <p class="cart-promise">Return risk-free and have free shipping.</p>
       <div class="sub-row"><span>Subtotal</span><b>$${subtotal}</b></div>
       <div class="ship-note">Shipping is confirmed at checkout.</div>
       <a href="#" class="btn btn-primary">Go to checkout</a>
-      <p class="returns-mini">In-person: 2-day returns, 1-week exchanges. Online: 30-day returns. Custom rugs are final sale.</p>
+      <div class="checkout-trust">
+        <div class="lock-line"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>Secure checkout SSL Encryption</div>
+        <div class="pay-badges">${PAY_BADGES}</div>
+      </div>
     </div>`;
   cartCount.textContent = String(cartQty + (padAdded ? 1 : 0));
   document.getElementById('cartRemove').addEventListener('click', () => { cartQty = 1; padAdded = false; renderEmpty(); });
-  document.getElementById('qtyDown').addEventListener('click', () => { if (cartQty > 1){ cartQty--; renderCart(name, meta, unitPrice); } });
-  document.getElementById('qtyUp').addEventListener('click', () => { cartQty++; renderCart(name, meta, unitPrice); });
+  document.getElementById('qtyDown').addEventListener('click', () => { if (cartQty > 1){ cartQty--; renderCart(name, meta, unitPrice, img); } });
+  document.getElementById('qtyUp').addEventListener('click', () => { cartQty++; renderCart(name, meta, unitPrice, img); });
   if (padAdded) {
-    document.getElementById('padRemove').addEventListener('click', () => { padAdded = false; renderCart(name, meta, unitPrice); });
+    document.getElementById('padRemove').addEventListener('click', () => { padAdded = false; renderCart(name, meta, unitPrice, img); });
   } else {
-    document.getElementById('addUnderpad').addEventListener('click', () => { padAdded = true; renderCart(name, meta, unitPrice); });
+    document.getElementById('addUnderpad').addEventListener('click', () => { padAdded = true; renderCart(name, meta, unitPrice, img); });
   }
 }
-document.getElementById('addToCart').addEventListener('click', () => { cartQty = 1; renderCart('Adoni Charcoal', 'Size: ' + currentSize + ' · 100% wool', 110); openCart(); });
-document.getElementById('addSample').addEventListener('click', () => {
-  cartBody.innerHTML = `
-    <div class="cart-items">
-      <div class="cart-line">
-        <div class="thumb">${RUG_ICON}</div>
-        <div><div class="nm">Adoni Charcoal sample swatch</div><div class="mt">Wool, charcoal</div><button class="rm" id="cartRemove">Remove</button></div>
-        <div class="pr">$5.00</div>
-      </div>
-    </div>
-    <div class="cart-foot">
-      <div class="sub-row"><span>Subtotal</span><b>$5.00</b></div>
-      <div class="ship-note">Exact size pricing &amp; shipping are confirmed at checkout.</div>
-      <a href="#" class="btn btn-primary">Go to checkout</a>
-      <p class="returns-mini">In-person: 2-day returns, 1-week exchanges. Online: 30-day returns. Custom rugs are final sale.</p>
-    </div>`;
-  cartCount.textContent = '1';
-  document.getElementById('cartRemove').addEventListener('click', renderEmpty);
-  openCart();
-});
+document.getElementById('addToCart').addEventListener('click', () => { cartQty = 1; renderCart('Adoni Charcoal', 'Size: ' + currentSize + ' · 100% wool', 110, 'assets/img/pdp-adoni-charcoal.jpg'); openCart(); });
 
 const searchBar = document.getElementById('searchBar');
 document.getElementById('searchToggle').addEventListener('click', () => { searchBar.classList.add('open'); setTimeout(()=>document.getElementById('searchInput').focus(),120); });
